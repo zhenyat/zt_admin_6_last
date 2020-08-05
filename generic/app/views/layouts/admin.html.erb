@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "ZT Admin Module"  %> </title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!--%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag 'favicon.ico', :rel => 'apple-touch-icon' %>
+    <%= render 'shared/shim' %>
+  </head>
+
+  <body>
+    <%= render 'shared/flash_messages', flash: flash %>
+    <%= render 'admin/shared/admin_top_navigation' %>
+    
+    <%= yield %>
+  </body>
+
+  <%= render 'shared/footer' %>
+</html>

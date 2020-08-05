@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one:                    Пользователь
+        other:                  Пользователи
+      product:
+        one:                    Товар
+        other:                  Товары
+
+    attributes:
+      user:
+        role:                   Роль
+        last_name:              Фамилия
+        first_name:             Имя
+        email:                  Э/почта
+        password:               Пароль
+        password_confirmation:  Подтверждение пароля
+      product:
+        category:               Категория
+        name:                   Имя
+        title:                  Наименование
+        description:            Описание
+        price:                  Цена
+        position:               Положение
+

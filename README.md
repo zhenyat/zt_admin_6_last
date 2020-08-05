@@ -5,7 +5,8 @@ Gem to generate Admin Scope files for RoR 6 App via CLI
 ## Versions
 
 ```bash
-v. 0.1.0:  Ruby 2.7.1 / Rails 6.0.3.2
+1.x   Rails 5 with Sprockets
+2.x:  Ruby 2.7.x / Rails 6 with Webpacker
 ```
 
 ## Functionality

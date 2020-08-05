@@ -4,10 +4,10 @@
 #
 #  Calls lib/zt_adm.rb
 #
-#  09.07.2020  ZT
+#  17.01.2017  ZT
 ################################################################################
 require 'zt_admin'   # lib/zt_admin.rb
 
-# Initial Test
-s = ZtAdmin::Sample.new 
-s.say_hello
+# Initial Test: Uncomment the lines below
+# s = ZtAdmin::Sample.new 
+# s.say_hello
