@@ -19,7 +19,7 @@ Gem to generate Admin Scope files for RoR 6 App via CLI
 ## Development
 
 ```bash
-chruby 2.7.1
+chruby 2.7.2
 bundle gem zt_admin
 ```
 
