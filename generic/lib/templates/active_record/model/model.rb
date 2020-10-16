@@ -71,7 +71,7 @@ class <%= class_name %> < <%= parent_class_name.classify %>
 <%- if attribute.name == 'status' -%>
   enum status: %w(active archived)
 <%- elsif attribute.name == 'role' -%>
-  enum role:   %w(manager admin sysadmin)
+  enum role:   %w(supervisor admin superadmin)
 <%- end -%>
 <%- end -%>
 <%- for attribute in attributes -%>

@@ -19,5 +19,5 @@
           .col-md-3
             = f.submit t('actions.save'), class: 'btn btn-primary btn-block'
           .col-md-3
-            - if @current_user.sysadmin?
+            - if @current_user.superadmin?
               = link_to t('actions.back'), admin_users_path, class: 'btn btn-default btn-block'
