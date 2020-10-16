@@ -5,21 +5,21 @@
 #
 # User attributes:
 #   role              - role:           enum
-#   last_name             - string:
-#   first_name             - string:
+#   last_name         - string:
+#   first_name        - string:
 #   email             - email:          string,  not NULL, unique
 #   password_digest   - password:       string, not NULL
 #   remember_token    - remember token: string
 #   status            - status:         enum { active (0) | archived (1) }
 #
 #  07.07.2016 ZT
+#  16.10.2020 Roles are changed
 ################################################################################
 class User < ApplicationRecord
   before_save {self.email.downcase!}
 
-  enum role:   %w(manager admin sysadmin)
+  enum role:   %w(supervisor admin superadmin)
   enum status: %w(active archived)
-
 
   validates :last_name,  presence: true
   validates :first_name, presence: true
@@ -29,7 +29,6 @@ class User < ApplicationRecord
 
   has_secure_password                      # validates presence of password & password_confirmation
   validates :password, length: {minimum: 8}
-
 
   # Returns an User full name
   def full_name

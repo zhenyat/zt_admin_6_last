@@ -7,9 +7,10 @@ module ApplicationHelper
   #       Rails.application.engine_name.gsub(/_application/,'')
   #
   # 15.12.2013  Created
+  # 16.10.2020  'module_parent_name' to be used since Rails 6.1
   ##############################################################################
   def app_name
-    Rails.application.class.parent_name
+    Rails.application.class.module_parent_name
   end
   ##############################################################################
   #  Handles flash type and sets a note class
