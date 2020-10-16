@@ -2,6 +2,7 @@
 #   .gitignore
 #  
 #   22.07.2020  Update for RoR 6
+#   16.10.2020  Last update
 ################################################################################
 # See https://help.github.com/articles/ignoring-files for more about ignoring files.
 #
@@ -11,6 +12,7 @@
 
 # Ignore bundler config
 /.bundle
+*.gem     # ignore created gem
 
 # Ignore all log files and temp files
 /log/*
