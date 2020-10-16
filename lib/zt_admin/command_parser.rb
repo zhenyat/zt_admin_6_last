@@ -26,7 +26,8 @@ module ZtAdmin
       options.enum = []
 
       opt_parser = OptionParser.new do |opts|
-        opts.banner  = "\nv.1 - for Rails 5 with Sprockets; v.2 (current) - for Rails 6 with Webpacker\n"
+        opts.banner  = "\nv.1 - for Rails 5 with Sprockets"
+        opts.banner << "\nv.2 (current) - for Rails 6 with Webpacker\n"
         opts.banner << "\nUsage:#{TAB2}zt_admin {i | init}     - Gemfile to be updated for further `bundle install`"
         opts.banner << "\n#{TAB5}zt_admin {c | clone}    - generic files to be added"
         opts.banner << "\n#{TAB5}                          including:  MVC User; VC sessions; VC pages/home"
