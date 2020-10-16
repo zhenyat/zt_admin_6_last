@@ -19,7 +19,7 @@
               %span.fas.fa-tools.fa-2x{"aria-hidden" => "true"}
               = t(:admin_home)
         %li.nav-item
-          - if @current_user.sysadmin?
+          - if @current_user.superadmin?
             .nav-link
               = link_to admin_users_path do
                 %span.fas.fa-users.fa-2x{"aria-hidden" => "true"}
