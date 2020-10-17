@@ -3,7 +3,7 @@
 #     Initializes parameters for the gem
 #
 #   09.07.2020  ZT
-#   05.08.2020  Last update
+#   17.10.2020  Last update (AppName definition)
 ################################################################################
 
 # Constants
@@ -41,8 +41,15 @@ module ZtAdmin
   MigratePath      = "#{AppRoot}/db/migrate"
   ModelPath        = "#{AppRoot}/app/models"
   AdminSharedPath  = "#{AppRoot}/app/views/admin/shared"
-
-  AppName = AppRoot.split('/').last.split('_').map{|e| e.capitalize}.join
+  
+  current_dir      = AppRoot.split('/').last
+  if current_dir.include? '_'
+    AppName = current_dir.split('_').map{|e| e.capitalize}.join
+  elsif current_dir.include? '-'
+    AppName = current_dir.split('-').map{|e| e.capitalize}.join
+  else
+    AppName = current_dir.capitalize
+  end
 
   def self.root
     File.dirname(__dir__).chomp("/lib")
