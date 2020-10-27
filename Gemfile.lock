@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zt_admin (2.10.0)
+    zt_admin (2.12.0)
 
 GEM
   remote: https://rubygems.org/
