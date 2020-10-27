@@ -6,10 +6,14 @@
 # 14.01.2017  Pundit procedure
 #             Flash handlig
 # 18.08.2017  replace 'before_filter' with 'before_action'
+# 27.10.2020  Ancestor Controller changed
 ################################################################################
-class Admin::BaseController < ApplicationController
+class Admin::BaseController < ActionController::Base
+  include ZT
   include Pundit
   include AdminAuthentication
+  # protect_from_forgery with: :exception
+  before_action :set_locale
   layout 'admin'
 
   protect_from_forgery with: :exception
