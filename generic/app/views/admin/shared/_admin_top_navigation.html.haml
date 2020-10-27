@@ -42,7 +42,7 @@
               /= link_to t(Account.model_name.human(count: 2)),  admin_accounts_path
             .dropdown-item
               = link_to t(:dummy), '#'
-              /= link_to (t(Product.model_name.human(count: 2)), admin_products_path
+              = link_to t(Product.model_name.human(count: 2)), admin_products_path
 
       %ul.nav.navbar-nav
         - if MULTILINGUAL
