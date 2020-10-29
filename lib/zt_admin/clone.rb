@@ -238,6 +238,9 @@ module ZtAdmin
     action_report "app/policies/panel_policy.rb"
     FileUtils.cp "#{policies}/panel_policy.rb", "#{AppRoot}/app/policies"
 
+    action_report "app/policies/product_policy.rb"
+    FileUtils.cp "#{policies}/product_policy.rb", "#{AppRoot}/app/policies"
+
     action_report "app/policies/user_policy.rb"
     FileUtils.cp "#{policies}/user_policy.rb", "#{AppRoot}/app/policies"
 
