@@ -192,6 +192,9 @@ module ZtAdmin
     action_report "app/controllers/admin/panel_controller.rb"
     FileUtils.cp "#{controllers}/admin/panel_controller.rb", "#{AppRoot}/app/controllers/admin"
 
+    action_report "app/controllers/admin/products_controller.rb"
+    FileUtils.cp "#{controllers}/admin/products_controller.rb", "#{AppRoot}/app/controllers/admin"
+
     action_report "app/controllers/admin/users_controller.rb"
     FileUtils.cp "#{controllers}/admin/users_controller.rb", "#{AppRoot}/app/controllers/admin"
 
