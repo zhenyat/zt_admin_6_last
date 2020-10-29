@@ -13,7 +13,7 @@ module ZtAdmin
     puts colored GREEN, "\File 'Gemfile' has been updated"
     
     puts colored(MAGENTA, "Run commands now:")
-    puts colored(MAGENTA, "#{TAB2}bundle install")
+    puts colored(MAGENTA, "#{TAB2}bundle update; gem cleanup; bundle install")
     # puts colored(MAGENTA, "#{TAB2}rails generate react:install")
     puts colored(MAGENTA, "#{TAB2}yarn add bootstrap jquery popper.js")
     puts colored(MAGENTA, "#{TAB2}yarn add @fortawesome/fontawesome-free")

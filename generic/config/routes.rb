@@ -20,11 +20,12 @@ Rails.application.routes.draw do
       namespace :admin do
         root 'panel#index'                                  # admin_root_path
         resources :users
+        resources :products
         # 1: Add new admin resources before this line
       end
 
       root   'pages#home'                                   # root_path
-
+      resources :products
     end
 
     # Root route is directed to default locale
@@ -44,11 +45,12 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'panel#index'                                  # admin_root_path
       resources :users
+      resources :products
       # 2: Add new admin resources before this line
     end
 
     root   'pages#home'                                   # root_path
-
+    resources :products
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

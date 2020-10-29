@@ -147,7 +147,7 @@ module ZtAdmin
 
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 2).to_s
     action_report "db/migrate/#{timestamp}_create_products.rb"
-    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_products.rb"
+    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_crerate_products.rb"
 
     ####    App   ####
 
@@ -176,6 +176,9 @@ module ZtAdmin
 
     action_report "app/models/user.rb"
     FileUtils.cp "#{models}/user.rb", "#{AppRoot}/app/models"
+    action_report "app/models/product.rb"
+    FileUtils.cp "#{models}/product.rb", "#{AppRoot}/app/models"
+
 
     ### Get generic files in the *Controllers* directory
     action_report "app/controllers"
