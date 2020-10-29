@@ -7,7 +7,8 @@
 #   12.04.2017  1.2.0   Workaround *vendor* *assets* for RoR 5.1.x
 #               1.2.1   Bugs fixed
 #   22.07.2020  2.0.0   Updated for RoR 6
-#   05.08.2002  2.4.0   Working version: Rails + Webpack
+#   05.08.2020  2.4.0   Working version: Rails + Webpack
+#   29.10.2020          Products migration added
 ################################################################################
 module ZtAdmin
 
@@ -143,6 +144,10 @@ module ZtAdmin
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000).to_s
     action_report "db/migrate/#{timestamp}_create_users.rb"
     FileUtils.cp "#{db}/migrate/TIMESTAMP_create_users.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_users.rb"
+
+    timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 2).to_s
+    action_report "db/migrate/#{timestamp}_create_products.rb"
+    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_products.rb"
 
     ####    App   ####
 

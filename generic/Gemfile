@@ -75,6 +75,17 @@ gem 'bootsnap', require: false                  # Reduces boot times through cac
 
 gem 'haml-rails'                                # https://github.com/indirect/haml-rails
 
+gem 'pundit'                                     # https://github.com/elabs/pundit
+
+# gem 'rack-cors'
+# gem 'devise'                                  # https://github.com/plataformatec/devise
+# gem 'devise_token_auth'
+
+gem 'image_processing'                           # Use Active Storage variant
+# gem 'mini_magick'   got by 'image_processing'  # Use ActiveStorage variant https://github.com/minimagick/minimagick
+# gem 'ckeditor'                                 # https://github.com/galetahub/ckeditor
+# gem 'carrierwave'                              # https://github.com/carrierwaveuploader/carrierwave
+
 # gem 'zt_admin', :github => 'zhenyat/zt_admin', :branch => 'master'
 
 # crono for jobs
@@ -89,16 +100,8 @@ gem 'haml-rails'                                # https://github.com/indirect/ha
 # gem 'gon'
 # gem 'fusioncharts-rails'
 # gem 'chartkick'
-#
+
 # gem 'rest-client'                              # https://github.com/rest-client/rest-client
-# gem 'devise'                                   # https://github.com/plataformatec/devise
-
-gem 'image_processing'                           # Use Active Storage variant
-# gem 'mini_magick'   got by 'image_processing'  # Use ActiveStorage variant https://github.com/minimagick/minimagick
-# gem 'ckeditor'                                 # https://github.com/galetahub/ckeditor
-# gem 'carrierwave'                              # https://github.com/carrierwaveuploader/carrierwave
-
-gem 'pundit'                                     # https://github.com/elabs/pundit
 
 # gem "acts_as_list"                             # https://github.com/swanandp/acts_as_list
 # gem 'acts-as-taggable-on'                      # https://github.com/mbleigh/acts-as-taggable-on

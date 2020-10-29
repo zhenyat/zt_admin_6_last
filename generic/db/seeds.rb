@@ -1,15 +1,14 @@
 begin
-  if User.present? && !User.exists?
-    User.create name: 'Dummy', email: 'dummy@mail.ru',  password: '123123123'
-    User.create name: 'Mary',  email: 'mary@gmail.com', password: '123123123'
-    puts "===== New record(s) to 'User'"
+  if (User.present? and not User.exists?)
+    User.create last_name: 'Bob', last_name: 'Dummy', role: 2, email: 'dummy@mail.ru',  password: '123123123', passport_confirmation: '123123123'
+    puts "===== Done: 'User' record(s)"
   end
 rescue
   puts "===== Achtung! 'User' entity does not exist"
 end
 
 begin
-  if Product.present? && !Product.exists?
+  if (Product.present? and not Product.exists?)
     Product.create([
       { name:   'hemp_paste', 
         title:  'Паста конопляная Классическая 200 г',
@@ -24,7 +23,7 @@ begin
         description: 'Цвета: серый, бежевый. Состав: 55% конопля; 45% хлопок.'
       }
     ])
-    puts "===== New record(s) to 'Product'"
+    puts "===== 'Products' record(s)"
   end
 rescue
   puts "===== Achtung! 'Product' entity does not exist"
