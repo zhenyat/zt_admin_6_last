@@ -23,7 +23,7 @@ begin
         description: 'Цвета: серый, бежевый. Состав: 55% конопля; 45% хлопок.'
       }
     ])
-    puts "===== Done: 'User' record(s)"
+    puts "===== Done: 'Product' record(s)"
   end
 rescue
   puts "===== Achtung! 'Product' entity does not exist"
