@@ -18,7 +18,7 @@
 class User < ApplicationRecord
   before_save {self.email.downcase!}
 
-  enum role:   %w(supervisor admin superadmin)
+  enum role:   %w(manager admin superadmin)
   enum status: %w(active archived)
 
   validates :last_name,  presence: true

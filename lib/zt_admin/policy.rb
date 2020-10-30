@@ -19,11 +19,11 @@ module ZtAdmin
   file.puts "\n#{TAB}# For index"
   file.puts "#{TAB}class Scope < Scope"
   file.puts "#{TAB2}def resolve"
-  file.puts "#{TAB3}if (user.superadmin? || user.admin? || user.supervisor?)\n#{TAB4}scope.all\n#{TAB4}else\n#{TAB4}nil\n#{TAB3}end"
+  file.puts "#{TAB3}if (user.superadmin? || user.admin? || user.manager?)\n#{TAB4}scope.all\n#{TAB4}else\n#{TAB4}nil\n#{TAB3}end"
   file.puts "#{TAB2}end"
   file.puts "#{TAB}end"
 
-  file.puts "\n#{TAB}def show?\n#{TAB2}user.superadmin? || user.admin? || user.supervisor?\n#{TAB}end"
+  file.puts "\n#{TAB}def show?\n#{TAB2}user.superadmin? || user.admin? || user.manager?\n#{TAB}end"
   file.puts "\n#{TAB}def create?\n#{TAB2}user.superadmin? || user.admin?\n#{TAB}end"
   file.puts "\n#{TAB}def new?\n#{TAB2}create?\n#{TAB}end"
   file.puts "\n#{TAB}def edit?\n#{TAB2}user.superadmin? || user.admin?\n#{TAB}end"

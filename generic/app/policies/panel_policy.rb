@@ -4,7 +4,7 @@ class PanelPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
-#      if (user.superadmin? || user.admin? || user.supervisor?)
+#      if (user.superadmin? || user.admin? || user.manager?)
 #        scope.all
 #      else
 #        nil
@@ -13,7 +13,7 @@ class PanelPolicy < ApplicationPolicy
   end
 
   def show?
-    user.superadmin? || user.admin? || user.supervisor?
+    user.superadmin? || user.admin? || user.manager?
   end
 
   def create?
@@ -25,11 +25,11 @@ class PanelPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.superadmin? || user.admin? || user.supervisor?
+    user.superadmin? || user.admin? || user.manager?
   end
 
   def update?
-    user.superadmin? || user.admin? || user.supervisor?
+    user.superadmin? || user.admin? || user.manager?
   end
 
   def destroy?
