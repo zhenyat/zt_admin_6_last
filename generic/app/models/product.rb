@@ -14,7 +14,6 @@
 #  29.10.2020 ZT
 ################################################################################
 class Product < ApplicationRecord
-  # has_rich_text :content
   enum status: %w(active archived)
   
   validates :name,  presence: true, uniqueness: true
