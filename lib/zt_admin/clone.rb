@@ -147,7 +147,7 @@ module ZtAdmin
 
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 2).to_s
     action_report "db/migrate/#{timestamp}_create_products.rb"
-    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_crerate_products.rb"
+    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_products.rb"
 
     ####    App   ####
 
