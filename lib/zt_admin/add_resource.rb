@@ -3,6 +3,7 @@
 #     Generates a Model resources in Admin namespace
 #
 #   30.01.2017  ZT
+#   02.11.2020  Handling DRY routes
 ################################################################################
 module ZtAdmin
   begin
@@ -18,12 +19,10 @@ module ZtAdmin
 
     file_out = File.open "#{AppRoot}/config/routes.rb", "w"   # Create new file
     lines.each do |line|
-      if line.match("1: Add new admin resources")     # MULTILINGUAL Admin namespace
-        file_out.puts "#{TAB4}resources :#{$names}"
-      elsif line.match("2: Add new admin resources")  # Standard Admin namespace
-        file_out.puts "#{TAB3}resources :#{$names}"
+      if line.match("Add new admin resources")
+        file_out.puts "#{TAB4}resources :#{$names}"  # Add resources to Admin namespace
       end
-      file_out.puts line                              # Just copy an original line
+      file_out.puts line                             # Just copy an original line
     end
     file_out.close
 

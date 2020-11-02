@@ -1,57 +1,40 @@
 ################################################################################
 #   29.03.2018  Bug fixed for logout error (is it since Rails 5.2?):
-#                 No route matches [GET] "/ru/logout" 
+#               No route matches [GET] "/ru/logout" 
 #               Solution: *get* instead of *delete*  - has been canceled (see below)
-#               
 #               Later: The bug is vanishing if to use *jquery_ujs* - MUST BE!
+#   01.11.2020  Active Storage added for redirection
+#   02.11.2020  DRY code
 ################################################################################
 Rails.application.routes.draw do
 
-  if MULTILINGUAL
-
-    scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
-
-      # Session resources
-      get    'sessions/new'                                 # sessions_new_path
-      post   'login',   to: 'sessions#create'               # login_path  - creates new session (login)
-      delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
-     #get    'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
-
-      namespace :admin do
-        root 'panel#index'                                  # admin_root_path
-        resources :users
-        resources :products
-        # 1: Add new admin resources before this line
-      end
-
-      root   'pages#home'                                   # root_path
-      resources :products
-    end
-
-    # Root route is directed to default locale
-    root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
-
-    # All other routes without locales are directed to the same ones with locales
-    get "/*path", to: redirect("/#{I18n.default_locale}/%{path}", status: 302), constraints: {path: /(?!(#{I18n.available_locales.join("|")})\/).*/}, format: false
-
-  else
+  app_scope = MULTILINGUAL ? "/:locale" : "/"
+  scope app_scope, locale: /#{I18n.available_locales.join("|")}/ do
 
     # Session resources
     get    'sessions/new'                                 # sessions_new_path
     post   'login',   to: 'sessions#create'               # login_path  - creates new session (login)
     delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
-   #get    'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
-    
+
     namespace :admin do
       root 'panel#index'                                  # admin_root_path
       resources :users
       resources :products
-      # 2: Add new admin resources before this line
+      #  Add new admin resources before this line
     end
 
     root   'pages#home'                                   # root_path
     resources :products
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  if MULTILINGUAL
+    # Root route is directed to default locale
+    root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
+
+    # All other routes without locales are directed to the same ones with locales
+    #get "/*path", to: redirect("/#{I18n.default_locale}/%{path}", status: 302), constraints: {path: /(?!(#{I18n.available_locales.join("|")})\/).*/}, format: false
+  
+    # Active Storage paths are excluded from the redirection process
+    get "/*path", to: redirect("/#{I18n.default_locale}/%{path}", status: 302), constraints: {path: /(?!(rails\/active_storage|#{I18n.available_locales.join("|")})\/).*/}, format: false
+  end
 end
