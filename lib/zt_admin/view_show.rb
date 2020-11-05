@@ -34,7 +34,7 @@ module ZtAdmin
 
   file.puts "\n.form_actions"
   file.puts "#{TAB}.row\n#{TAB2}.col-md-2"
-  file.puts "#{TAB3}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-primary btn-block'"
+  file.puts "#{TAB3}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-primary btn-sm'"
 
   file.close
 end

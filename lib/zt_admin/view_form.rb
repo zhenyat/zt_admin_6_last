@@ -51,13 +51,13 @@ module ZtAdmin
   file.puts "#{TAB4}.row"
 
   file.puts "#{TAB5}.col-md-3"
-  file.puts "#{TAB6}= f.submit t('actions.save'), class: 'btn btn-primary btn-block'"
+  file.puts "#{TAB6}= f.submit t('actions.save'), class: 'btn btn-primary btn-sm'"
 
   #file.puts "#{TAB5}.col-md-3"
-  #file.puts "#{TAB6}= link_to t('actions.save'), admin_#{$name}_path, class: 'btn btn-info btn-block' unless @#{$name}.new_record?"
+  #file.puts "#{TAB6}= link_to t('actions.save'), admin_#{$name}_path, class: 'btn btn-info btn-sm' unless @#{$name}.new_record?"
 
   file.puts "#{TAB5}.col-md-3"
-  file.puts "#{TAB6}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-default btn-block'"
+  file.puts "#{TAB6}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-default btn-sm'"
 
   file.close
 end

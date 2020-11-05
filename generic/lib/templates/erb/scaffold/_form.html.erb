@@ -20,13 +20,13 @@
       <div class="form-actions">
         <div class="row">
           <div class="col-md-4">
-            <%= f.submit :class => "btn btn-primary btn-block" %>
+            <%= f.submit :class => "btn btn-primary btn-sm" %>
           </div>
           <div class="col-md-3">
-            <%= link_to t('actions.show'), @<%= singular_table_name %>,  class: 'btn btn-info btn-block' unless @<%= singular_table_name %>.new_record? %>
+            <%= link_to t('actions.show'), @<%= singular_table_name %>,  class: 'btn btn-info btn-sm' unless @<%= singular_table_name %>.new_record? %>
           </div>
           <div class="col-md-3">
-            <%= link_to t('actions.back'), <%= table_name %>_path, class: "btn btn-default btn-block" %>
+            <%= link_to t('actions.back'), <%= table_name %>_path, class: "btn btn-default btn-sm" %>
           </div>
       </div>
     <% end %>     <!-- end simple_form -->

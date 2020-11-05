@@ -46,7 +46,7 @@ module ZtAdmin
   file.puts "#{TAB4}%td= render 'admin/shared/index_buttons', resource: #{$name}"
 
   file.puts "%br\n.row\n#{TAB}.col-md-2"
-  file.puts "#{TAB2}= link_to t('actions.create'), new_admin_#{$name}_path, class: 'btn btn-primary btn-block'"
+  file.puts "#{TAB2}= link_to t('actions.create'), new_admin_#{$name}_path, class: 'btn btn-primary btn-sm'"
 
   file.close
 end

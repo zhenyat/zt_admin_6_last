@@ -17,7 +17,7 @@
       .form_actions
         .row
           .col-md-3
-            = f.submit t('actions.save'), class: 'btn btn-primary btn-block'
+            = f.submit t('actions.save'), class: 'btn btn-primary btn-sm'
           .col-md-3
             - if @current_user.superadmin?
-              = link_to t('actions.back'), admin_users_path, class: 'btn btn-default btn-block'
+              = link_to t('actions.back'), admin_users_path, class: 'btn btn-default btn-sm'
