@@ -4,9 +4,9 @@ ru:
       user:
         one:                    Пользователь
         other:                  Пользователи
-      product:
-        one:                    Товар
-        other:                  Товары
+      sample:
+        one:                    Образец
+        other:                  Образцы
 
     attributes:
       user:
@@ -16,11 +16,12 @@ ru:
         email:                  Э/почта
         password:               Пароль
         password_confirmation:  Подтверждение пароля
-      product:
-        category:               Категория
+        status:                 Status
+      sample:
         name:                   Имя
         title:                  Наименование
         description:            Описание
         price:                  Цена
-        position:               Положение
+        quantity:               Количество
+        status:                 Статус
 

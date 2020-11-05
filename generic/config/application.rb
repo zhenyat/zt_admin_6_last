@@ -40,5 +40,7 @@ module Dummy
     config.i18n.available_locales = %w(en ru)   # [:en, :de, :ru] - to be compared / investigated
     config.i18n.default_locale    = :en
     config.i18n.load_path        += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]  # YAML Multiple structure
+
+    config.active_storage.replace_on_assign_to_many = false
   end
 end

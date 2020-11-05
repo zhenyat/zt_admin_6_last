@@ -25,3 +25,9 @@ ru:
     active:         Активный
     archived:       Архивный
     status:         Статус
+
+  # Active Text & Storage  
+  content:          Контент
+  images:
+    cover_image:    Обложка
+    gallery:        Галерея

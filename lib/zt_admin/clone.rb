@@ -8,7 +8,7 @@
 #               1.2.1   Bugs fixed
 #   22.07.2020  2.0.0   Updated for RoR 6
 #   05.08.2020  2.4.0   Working version: Rails + Webpack
-#   29.10.2020          Products migration added
+#   05.11.2020          Samples migration added
 ################################################################################
 module ZtAdmin
 
@@ -146,8 +146,8 @@ module ZtAdmin
     FileUtils.cp "#{db}/migrate/TIMESTAMP_create_users.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_users.rb"
 
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 2).to_s
-    action_report "db/migrate/#{timestamp}_create_products.rb"
-    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_products.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_products.rb"
+    action_report "db/migrate/#{timestamp}_create_samples.rb"
+    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_samples.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_samples.rb"
 
     ####    App   ####
 
@@ -176,8 +176,8 @@ module ZtAdmin
 
     action_report "app/models/user.rb"
     FileUtils.cp "#{models}/user.rb", "#{AppRoot}/app/models"
-    action_report "app/models/product.rb"
-    FileUtils.cp "#{models}/product.rb", "#{AppRoot}/app/models"
+    action_report "app/models/sample.rb"
+    FileUtils.cp "#{models}/sample.rb", "#{AppRoot}/app/models"
 
 
     ### Get generic files in the *Controllers* directory
@@ -192,8 +192,8 @@ module ZtAdmin
     action_report "app/controllers/admin/panel_controller.rb"
     FileUtils.cp "#{controllers}/admin/panel_controller.rb", "#{AppRoot}/app/controllers/admin"
 
-    action_report "app/controllers/admin/products_controller.rb"
-    FileUtils.cp "#{controllers}/admin/products_controller.rb", "#{AppRoot}/app/controllers/admin"
+    action_report "app/controllers/admin/samples_controller.rb"
+    FileUtils.cp "#{controllers}/admin/samples_controller.rb", "#{AppRoot}/app/controllers/admin"
 
     action_report "app/controllers/admin/users_controller.rb"
     FileUtils.cp "#{controllers}/admin/users_controller.rb", "#{AppRoot}/app/controllers/admin"
@@ -238,8 +238,8 @@ module ZtAdmin
     action_report "app/policies/panel_policy.rb"
     FileUtils.cp "#{policies}/panel_policy.rb", "#{AppRoot}/app/policies"
 
-    action_report "app/policies/product_policy.rb"
-    FileUtils.cp "#{policies}/product_policy.rb", "#{AppRoot}/app/policies"
+    action_report "app/policies/sample_policy.rb"
+    FileUtils.cp "#{policies}/sample_policy.rb", "#{AppRoot}/app/policies"
 
     action_report "app/policies/user_policy.rb"
     FileUtils.cp "#{policies}/user_policy.rb", "#{AppRoot}/app/policies"
@@ -284,6 +284,7 @@ module ZtAdmin
 
     puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users'):")
     puts colored(MAGENTA, "#{TAB2}rails db:create")
+    puts colored(MAGENTA, "#{TAB2}rails action_text:install")
     puts colored(MAGENTA, "#{TAB2}rails db:migrate")
     puts colored(MAGENTA, "#{TAB2}rails db:seed")
 

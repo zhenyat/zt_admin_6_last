@@ -25,3 +25,9 @@ en:
     active:         Active
     archived:       Archived
     status:         Status
+
+ # Active Text & Storage
+  content:          Content
+  images:
+    cover_image:    Cover Image
+    gallery:        Gallery

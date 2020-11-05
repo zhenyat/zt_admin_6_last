@@ -1,6 +1,7 @@
 begin
   if (User.present? and not User.exists?)
-    User.create first_name: 'Bob', last_name: 'Dummy', role: 2, email: 'dummy@mail.ru',  password: '123123123', password_confirmation: '123123123'
+    User.create first_name: 'Bob', last_name: 'Dummy',   role: 2, email: 'dummy@mail.ru',  password: '123123123', password_confirmation: '123123123'
+    User.create first_name: 'Alex', last_name: 'Petrov', role: 0, email: 'alex@gmail.com',  password: '123123123', password_confirmation: '123123123'
     puts "===== Done: 'User' record(s)"
   end
 rescue
@@ -8,23 +9,30 @@ rescue
 end
 
 begin
-  if (Product.present? and not Product.exists?)
-    Product.create([
+  if (Sample.present? and not Sample.exists?)
+    Sample.create([
       { name:   'hemp_paste', 
         title:  'Паста конопляная Классическая 200 г',
-        sku:    'kpl-hmp-chc-02-1',
-        price:  '288.00',
-        description: 'Страна производитель:Россия. \nОтличная возможность украсить свой день уникальным видом пасты из очищенных семян конопли. Слегка кедровый вкус и ореховый аромат откроют вам новый вид лакомства в пастах. Наш конопляный продукт создаётся без процессов термообработки, что позволяет сохранить максимум полезных свойств. Продукт не содержит красители, консерванты и ароматизаторы.'
+        price:  288.00,
+        quantity: 14
       },
       { name:   'hemp_mask_grey', 
         title:  'Серая конопляная маска 3-слойная',
-        sku:    'acc-msk3-gr',
-        price:  '198.00',
-        description: 'Цвета: серый, бежевый. Состав: 55% конопля; 45% хлопок.'
+        price:  198.00
+      },
+      { name:   'hemp_hat', 
+        title:  'Шляпа оранжевая из конопли',
+        price:  1088.00,
+        quantity: 9
+      },
+      { name:   'hemp_bag', 
+        title:  'Рюкзак из конопли Нарантан',
+        price:  3188.00,
+        quantity: 9
       }
     ])
-    puts "===== Done: 'Product' record(s)"
+    puts "===== Done: 'Sample' record(s)"
   end
 rescue
-  puts "===== Achtung! 'Product' entity does not exist"
+  puts "===== Achtung! 'Sample' entity does not exist"
 end

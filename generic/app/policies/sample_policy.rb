@@ -1,4 +1,4 @@
-class ProductPolicy < ApplicationPolicy
+class SamplePolicy < ApplicationPolicy
 
   # For index
   class Scope < Scope

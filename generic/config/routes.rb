@@ -19,12 +19,12 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'panel#index'                                  # admin_root_path
       resources :users
-      resources :products
-      #  Add new admin resources before this line
+      resources :samples
+      # Add new admin resources before this line
     end
 
     root   'pages#home'                                   # root_path
-    resources :products
+    resources :samples
   end
 
   if MULTILINGUAL

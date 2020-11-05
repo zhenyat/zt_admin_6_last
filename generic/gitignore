@@ -2,7 +2,7 @@
 #   .gitignore
 #  
 #   22.07.2020  Update for RoR 6
-#   10.10.2020	Last update
+#   05.11.2020	Last update
 ####################################################################################
 # See https://help.github.com/articles/ignoring-files for more about ignoring files
 #
@@ -45,6 +45,7 @@
 /node_modules
 /yarn-error.log
 
+storage/    # Active Storage attachements
 
 /public/packs
 /public/packs-test
