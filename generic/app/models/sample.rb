@@ -15,14 +15,15 @@
 #   images      - Active Storage attachements
 #
 #   05.11.2020  ZT
+#   12.11.2020  Images handling shifted to Concerns
 ###########################################################
 class Sample < ApplicationRecord
   has_rich_text     :content
-  has_one_attached  :cover_image, dependent: :destroy
-  has_many_attached :images,      dependent: :destroy
-  before_destroy    :remove_all_images, prepend: true
+  # has_one_attached  :cover_image, dependent: :destroy
+  # has_many_attached :images,      dependent: :destroy
+  # before_destroy    :remove_all_images, prepend: true
 
-  attr_accessor :remove_cover_image
+  # attr_accessor :remove_cover_image
 
   enum status: %w(active archived)
   
@@ -31,11 +32,11 @@ class Sample < ApplicationRecord
   validates :price,    presence: true, numericality: {greater_than_or_equal_to: 0}
   validates :quantity, presence: true, numericality: {greater_than_or_equal_to: 0}
 
-  private
+  # private
 
-  # Removes all images (if any) for destroyed instance 
-  def remove_all_images
-    self.cover_image.purge                 if self.cover_image.attached?
-    self.images.each {|image| image.purge} if self.images.attached?
-  end
+  # # Removes all images (if any) for destroyed instance 
+  # def remove_all_images
+  #   self.cover_image.purge                 if self.cover_image.attached?
+  #   self.images.each {|image| image.purge} if self.images.attached?
+  # end
 end

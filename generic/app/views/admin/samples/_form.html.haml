@@ -35,7 +35,7 @@
               - @sample.images.each do |image|
                 .col-md-3
                   = image_tag image.variant(resize_to_fit: [100, 100])
-                  = check_box_tag "image_ids[]", image.id
+                  = check_box_tag "image_to_remove_ids[]", image.id
                   %i.fas.fa-trash
         %br
         .form_actions

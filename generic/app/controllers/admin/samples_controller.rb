@@ -7,7 +7,7 @@
 ###########################################################
 class Admin::SamplesController < Admin::BaseController
   before_action :set_sample,    only: [:show, :edit, :update,:destroy]
-  after_action  :delete_images, only: :update
+  after_action  :remove_images, only: :update
 
   def index
     @samples = policy_scope(Sample)
@@ -40,7 +40,6 @@ class Admin::SamplesController < Admin::BaseController
   def update
     authorize @sample
     if @sample.update(sample_params)
-      # delete_images
       flash[:success] = t('messages.updated', model: @sample.class.model_name.human)
       redirect_to [:admin, @sample]
     else      
@@ -61,12 +60,13 @@ class Admin::SamplesController < Admin::BaseController
       @sample = Sample.find(params[:id])
     end
 
-    def delete_images
+    # Removes images, selected during Editing
+    def remove_images
       @sample.cover_image.purge if sample_params[:remove_cover_image] == '1'
-      image_ids = params['image_ids']
-      if image_ids.present?
-        image_ids.each do |image_id|
-          @sample.images.find(image_id).purge
+      image_to_remove_ids = params['image_to_remove_ids']
+      if image_to_remove_ids.present?
+        image_to_remove_ids.each do |image_to_remove_id|
+          @sample.images.find(image_to_remove_id).purge
         end
       end
     end
