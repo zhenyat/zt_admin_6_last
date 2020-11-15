@@ -16,8 +16,11 @@
 #
 #   05.11.2020  ZT
 #   12.11.2020  Images handling shifted to Concerns
+#   15.11.2020  Corrected
 ###########################################################
 class Sample < ApplicationRecord
+  include ImageHandling
+
   has_rich_text     :content
   # has_one_attached  :cover_image, dependent: :destroy
   # has_many_attached :images,      dependent: :destroy
