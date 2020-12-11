@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     # Session resources
     get   'sessions/new'                                # sessions_new_path
     post 'login',  to: 'sessions#create'               # login_path  - creates new session (login)
-    get  'logout', to: 'sessions#destroy', as: :logout  # logout_path - destroys    session (log out)
-    # delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
+    # get  'logout', to: 'sessions#destroy', as: :logout  # logout_path - destroys    session (log out)
+    delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
 
     namespace :admin do
       root 'panel#index'                                  # admin_root_path
