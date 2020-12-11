@@ -7,9 +7,10 @@
 #             Flash handlig
 # 18.08.2017  replace 'before_filter' with 'before_action'
 # 27.10.2020  Ancestor Controller changed
+# 15.11.2020  No classic autoloader: Zeitwerk only!
 ################################################################################
 class Admin::BaseController < ActionController::Base
-  include ZT
+  include Zt    # Zeitwerk
   include Pundit
   include AdminAuthentication
   # protect_from_forgery with: :exception

@@ -50,46 +50,45 @@
 #   05.08.2020  Combo: Webpack + Bootstrap + Simple Form + Font Awesome + ...
 #   11.09.2020  Rails 6.0.3.3; pure webpecker is used
 #   17.10.2020  Ruby 2.7.2 / Rails 6.0.3.4 & some gems added / removed
-#   02.11.2020  Last update
+#   09.12.2020  Last update
 ################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
-gem 'rails', '6.0.3.4'                          # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '6.0.3.4'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
-gem 'sqlite3'                                   # Use sqlite3    as the database for Active Record
+gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
 # gem 'sqlite3', groups: [:test, :development]
-# gem 'mysql2'                                  # Use mysql      as the database for Active Record
-# gem 'pg'                                      # Use postgresql as the database for Active Record
-# gem 'pg_search'                               # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
-# gem 'seed_dump'                               # https://github.com/rroblak/seed_dump
+# gem 'mysql2'                     # Use mysql      as the database for Active Record
+# gem 'pg'                         # Use postgresql as the database for Active Record
+# gem 'pg_search'                  # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
+# gem 'seed_dump'                  # https://github.com/rroblak/seed_dump
 
-gem 'puma'                                      # Use Puma as the app server
-gem 'sassc-rails'                               # Use SCSS for stylesheets
-gem 'webpacker', '~> 5.x'                       # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'puma'                         # Use Puma as the app server
+gem 'sassc-rails'                  # Use SCSS for stylesheets
+gem 'webpacker', '~> 5.x'          # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
-gem 'turbolinks'                                # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jbuilder'                                  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'bcrypt'                                    # Use ActiveModel has_secure_password
-gem 'bootsnap', require: false                  # Reduces boot times through caching; required in config/boot.rb
+gem 'turbolinks'                   # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'jbuilder'                     # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'bcrypt'                       # Use ActiveModel has_secure_password
+gem 'bootsnap', require: false     # Reduces boot times through caching; required in config/boot.rb
 
-gem 'haml-rails'                                # https://github.com/indirect/haml-rails
-
-gem 'pundit'                                     # https://github.com/elabs/pundit
+gem 'simple_form'                  # https://github.com/plataformatec/simple_form
+gem 'enum_help'                    # MUST BE for simple form
+gem 'haml-rails'                   # https://github.com/indirect/haml-rails
+gem 'pundit'                       # https://github.com/elabs/pundit
 
 gem 'rack-cors'
-gem 'devise'                                  # https://github.com/plataformatec/devise
+gem 'devise'                       # https://github.com/plataformatec/devise
 gem 'devise_token_auth'
 
-gem 'image_processing'                           # Use Active Storage variant
-
-# gem 'zt_admin', :github => 'zhenyat/zt_admin', :branch => 'master'
+gem 'image_processing'             # Use Active Storage variant
 
 # crono for jobs
 # gem 'crono'
 # gem 'daemons'
-# gem 'sinatra', require: nil                    # to run web-console for crono
+# gem 'sinatra', require: nil      # to run web-console for crono
 
 # gem 'whenever', :require => false
 # gem "simple_scheduler"
@@ -99,21 +98,19 @@ gem 'image_processing'                           # Use Active Storage variant
 # gem 'fusioncharts-rails'
 # gem 'chartkick'
 
-# gem 'rest-client'                              # https://github.com/rest-client/rest-client
+# gem 'rest-client'                # https://github.com/rest-client/rest-client
 
-# gem "acts_as_list"                             # https://github.com/swanandp/acts_as_list
-# gem 'acts-as-taggable-on'                      # https://github.com/mbleigh/acts-as-taggable-on
+# gem "acts_as_list"               # https://github.com/swanandp/acts_as_list
+# gem 'acts-as-taggable-on'        # https://github.com/mbleigh/acts-as-taggable-on
 
-# gem 'redis'                                    # Use Redis adapter to run Action Cable in production
+# gem 'redis'                      # Use Redis adapter to run Action Cable in production
 
 # MH 3-rd Edition
 # gem 'faker'
 # gem 'fog'
 
-gem 'simple_form'                  # https://github.com/plataformatec/simple_form
-gem 'enum_help'                    # MUST BE for simple form
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Byebug is a Ruby 2 debugger. Call 'byebug' anywhere in the code to stop execution and get a debugger console                                                     # https://github.com/deivid-rodriguez/byebug
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Ruby 2 debugger. Call 'byebug' anywhere in the code to stop execution and get a debugger console                                                     # https://github.com/deivid-rodriguez/byebug
 end
 
 group :development do

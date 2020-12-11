@@ -1,3 +1,3 @@
 module ZtAdmin
-  VERSION = "2.21.0"
+  VERSION = "2.24.0"
 end

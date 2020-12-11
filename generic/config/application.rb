@@ -15,6 +15,7 @@
 #
 # 25.01.2016  Updated for RoR 5
 # 24.07.2020  Updated for RoR 6
+# 15.11.2020  No classic autoloader: Zeitwerk only! 
 ################################################################################
 require_relative 'boot'
 
@@ -28,7 +29,7 @@ module Dummy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.autoloader = :classic  #ZT  # https://weblog.rubyonrails.org/2019/2/22/zeitwerk-integration-in-rails-6-beta-2/#backwards-incompatibility
+    #config.autoloader = :classic  #ZT  # https://weblog.rubyonrails.org/2019/2/22/zeitwerk-integration-in-rails-6-beta-2/#backwards-incompatibility
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

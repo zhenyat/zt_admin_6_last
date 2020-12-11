@@ -14,9 +14,11 @@ module ZtAdmin
     
     puts colored(MAGENTA, "Run commands now:")
     puts colored(MAGENTA, "#{TAB2}bundle update; gem cleanup; bundle install")
-    # puts colored(MAGENTA, "#{TAB2}rails generate react:install")
     puts colored(MAGENTA, "#{TAB2}yarn add bootstrap jquery popper.js")
     puts colored(MAGENTA, "#{TAB2}yarn add @fortawesome/fontawesome-free")
+    # puts colored(MAGENTA, "#{TAB2}yarn add react-bootstrap bootstrap react-router-dom")
+    # puts colored(MAGENTA, "#{TAB2}yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ")
+    # puts colored(MAGENTA, "#{TAB2}yarn add @fortawesome/free-brands-svg-icons @fortawesome/react-fontawesome")
     puts colored(MAGENTA, "#{TAB2}rails generate simple_form:install --bootstrap")
     puts colored(MAGENTA, "#{TAB2}rails generate pundit:install")
     puts colored(MAGENTA, "#{TAB2}zt_admin c[lone]")

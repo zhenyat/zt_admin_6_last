@@ -5,6 +5,7 @@
 #               Later: The bug is vanishing if to use *jquery_ujs* - MUST BE!
 #   01.11.2020  Active Storage added for redirection
 #   02.11.2020  DRY code
+#   07.12.2020  Fixing Error: No route matches [GET] “/logout”
 ################################################################################
 Rails.application.routes.draw do
 
@@ -12,9 +13,10 @@ Rails.application.routes.draw do
   scope app_scope, locale: /#{I18n.available_locales.join("|")}/ do
 
     # Session resources
-    get    'sessions/new'                                 # sessions_new_path
-    post   'login',   to: 'sessions#create'               # login_path  - creates new session (login)
-    delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
+    get   'sessions/new'                                # sessions_new_path
+    post 'login',  to: 'sessions#create'               # login_path  - creates new session (login)
+    get  'logout', to: 'sessions#destroy', as: :logout  # logout_path - destroys    session (log out)
+    # delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
 
     namespace :admin do
       root 'panel#index'                                  # admin_root_path

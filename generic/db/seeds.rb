@@ -1,11 +1,11 @@
 begin
   if (User.present? and not User.exists?)
-    User.create first_name: 'Bob', last_name: 'Dummy',   role: 2, email: 'dummy@mail.ru',  password: '123123123', password_confirmation: '123123123'
-    User.create first_name: 'Alex', last_name: 'Petrov', role: 0, email: 'alex@gmail.com',  password: '123123123', password_confirmation: '123123123'
-    puts "===== Done: 'User' record(s)"
+    User.create first_name: 'Bob',  last_name: 'Dummy',  role: 2, email: 'dummy@mail.ru',  password: '123123123', password_confirmation: '123123123'
+    User.create first_name: 'Alex', last_name: 'Petrov', role: 0, email: 'alex@gmail.com', password: '123123123', password_confirmation: '123123123'
+    puts "===== Create 'User' record(s)"
   end
 rescue
-  puts "===== Achtung! 'User' entity does not exist"
+  puts "----- Achtung! Something went wrong ('User' entity does not exist?)"
 end
 
 begin
@@ -31,8 +31,8 @@ begin
         quantity: 9
       }
     ])
-    puts "===== Done: 'Sample' record(s)"
+    puts "===== Create 'Sample' record(s)"
   end
 rescue
-  puts "===== Achtung! 'Sample' entity does not exist"
+  puts "----- Achtung! Something went wrong ('Sample' entity does not exist?)"
 end
