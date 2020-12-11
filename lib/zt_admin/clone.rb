@@ -9,7 +9,11 @@
 #   22.07.2020  2.0.0   Updated for RoR 6
 #   05.08.2020  2.4.0   Working version: Rails + Webpack
 #   05.11.2020          Samples migration added
+<<<<<<< HEAD
 #   15.11.2020  2.21.0  bug fixed for images_handling.rb copying      
+=======
+#   15.11.2020  2.21.0  bug fixed for image_handling.rb copying      
+>>>>>>> 56627c29aeaa913739e835babad2ac8f0162c8ae
 ################################################################################
 module ZtAdmin
 
@@ -179,6 +183,7 @@ module ZtAdmin
     FileUtils.cp "#{models}/user.rb", "#{AppRoot}/app/models"
     action_report "app/models/sample.rb"
     FileUtils.cp "#{models}/sample.rb", "#{AppRoot}/app/models"
+
     action_report "app/models/concerns/images_handling.rb"
     FileUtils.cp "#{models}/concerns/images_handling.rb", "#{AppRoot}/app/models/concerns"
 
