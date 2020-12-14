@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   scope app_scope, locale: /#{I18n.available_locales.join("|")}/ do
 
     # Session resources
-    get   'sessions/new'                                # sessions_new_path
-    post 'login',  to: 'sessions#create'               # login_path  - creates new session (login)
-    # get  'logout', to: 'sessions#destroy', as: :logout  # logout_path - destroys    session (log out)
-    delete 'logout',  to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
+    get    'sessions/new'                                # sessions_new_path
+    post   'login',  to: 'sessions#create'               # login_path  - creates new session (login)
+   #get    'logout', to: 'sessions#destroy', as: :logout # logout_path - destroys    session (log out)
+    delete 'logout', to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
 
     namespace :admin do
       root 'panel#index'                                  # admin_root_path
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       # Add new admin resources before this line
     end
 
-    root   'pages#home'                                   # root_path
+    root      'pages#home'                                # root_path
     resources :samples
   end
 
