@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Zt  # Zeitwerk
-#  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
+  include Zt  # Zeitwerk Names Notation
   before_action :set_locale
 end

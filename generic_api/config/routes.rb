@@ -1,32 +1,33 @@
 ################################################################################
-#   29.03.2018  Bug fixed for logout error (is it since Rails 5.2?):
-#               No route matches [GET] "/ru/logout" 
-#               Solution: *get* instead of *delete*  - has been canceled (see below)
-#               Later: The bug is vanishing if to use *jquery_ujs* - MUST BE!
-#   01.11.2020  Active Storage added for redirection
-#   02.11.2020  DRY code
-#   07.12.2020  Fixing Error: No route matches [GET] “/logout”
+#   15.12.2020  ZT: API is included
 ################################################################################
 Rails.application.routes.draw do
-
+  mount_devise_token_auth_for 'Account', at: 'auth'
+ 
   app_scope = MULTILINGUAL ? "/:locale" : "/"
   scope app_scope, locale: /#{I18n.available_locales.join("|")}/ do
 
     # Session resources
     get    'sessions/new'                                # sessions_new_path
     post   'login',  to: 'sessions#create'               # login_path  - creates new session (login)
-   #get    'logout', to: 'sessions#destroy', as: :logout # logout_path - destroys    session (log out)
+    # get  'logout', to: 'sessions#destroy', as: :logout # logout_path - destroys    session (log out)
     delete 'logout', to: 'sessions#destroy', as: :logout # logout_path - deletes session (log out)
 
     namespace :admin do
       root 'panel#index'                                 # admin_root_path
       resources :users
       resources :samples
+      resources :accounts, only: [:index, :show]
       # Add new admin resources before this line
     end
+  
+    namespace :api do
+      namespace :v1 do
+        resources :samples
+      end
+    end
+    root 'pages#home'   # root_path for BE 
 
-    root      'pages#home'                               # root_path
-    resources :samples
   end
 
   if MULTILINGUAL

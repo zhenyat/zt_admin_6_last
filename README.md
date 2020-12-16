@@ -7,12 +7,14 @@ Gem to generate Admin Scope files for RoR 6 App via CLI
 ```bash
 1.x   Rails 5 with Sprockets
 2.x:  Ruby 2.7.x / Rails 6 with Webpacker
+3.x:  API generation mode is added 
 ```
 
 ## Functionality
 
 * Initializes the Admin Scope
 * Clones generic files
+* Clones API-generic files
 * Generates model 'User'
 * Generates admin files for a selected model
 

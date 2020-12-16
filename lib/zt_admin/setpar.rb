@@ -59,6 +59,10 @@ module ZtAdmin
     File.join root, 'generic', 'app', 'assets'
   end
 
+  def self.generic_api
+    File.join root, 'generic_api'
+  end
+
   def self.bin
     File.join root, 'bin'
   end

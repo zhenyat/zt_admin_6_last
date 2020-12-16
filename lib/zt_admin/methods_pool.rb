@@ -208,12 +208,14 @@ module ZtAdmin
       $mode = 'init'
     when 'c', 'clone'
       $mode = 'clone'
+    when 'a', 'api'
+      $mode = 'api'
     when 'g', 'generate'
       $mode = 'generate'
     when 'd', 'destroy'
       $mode = 'destroy'
     else
-      puts colored(RED, "zt_admin: First argument must be i[nit], c[lone], g[enerate] or d[estroy]")
+      puts colored(RED, "zt_admin: First argument must be i[nit], c[lone], a[pi], g[enerate] or d[estroy]")
       exit
     end
 

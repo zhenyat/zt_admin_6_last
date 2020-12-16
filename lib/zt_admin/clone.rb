@@ -10,6 +10,7 @@
 #   05.08.2020  2.4.0   Working version: Rails + Webpack
 #   05.11.2020          Samples migration added
 #   15.11.2020  2.21.0  bug fixed for images_handling.rb copying      
+#   16.12.20202 3.0.0   seedbank handling
 ################################################################################
 module ZtAdmin
 
@@ -134,10 +135,10 @@ module ZtAdmin
     end
     
     ####    db    ####
-    action_report "db"
-
-    action_report "db/seeds.rb"
-    FileUtils.cp "#{db}/seeds.rb", "#{AppRoot}/db"
+    action_report "db/seeds/"
+    create_dir "db/seeds"
+    FileUtils.cp "#{db}/seeds/users.seeds.rb", "#{AppRoot}/db/seeds"
+    FileUtils.cp "#{db}/seeds/samples.seeds.rb", "#{AppRoot}/db/seeds"
 
     ### Get generic files in the *migrate* directory
     create_dir "db/migrate"
@@ -285,11 +286,18 @@ module ZtAdmin
     create_dir "app/views/admin/"
     FileUtils.cp_r "#{views}/admin", "#{AppRoot}/app/views/"
 
-    puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users'):")
+    puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users' & 'samples):")
     puts colored(MAGENTA, "#{TAB2}rails db:create")
     puts colored(MAGENTA, "#{TAB2}rails action_text:install")
     puts colored(MAGENTA, "#{TAB2}rails db:migrate")
     puts colored(MAGENTA, "#{TAB2}rails db:seed")
+    puts colored(GRAY, "\n============================")
+    puts colored(BLUE, "#{TAB}To generate API component run:")
+    puts colored(BLUE, "#{TAB2}rails g devise:install")
+    puts colored(BLUE, "#{TAB2}rails g devise_token_auth:install Account auth")
+    puts colored(BLUE, "#{TAB2}rails db:migrate")
+    puts colored(BLUE, "#{TAB2}zt_admin a[pi]")
+    puts colored(GRAY, "\n============================\n")
 
   rescue Exception => error
     puts colored(RED, "\nACHTUNG! Something went wrong during cloning process...")

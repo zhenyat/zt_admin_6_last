@@ -3,6 +3,7 @@
 #     Main Module to create / update / destroy directories and files
 #
 #   29.01.2017  ZT
+#   14.12.2020  API is added
 ################################################################################
 require 'zt_admin/version'
 require 'zt_admin/setpar'
@@ -23,6 +24,9 @@ module ZtAdmin
 
   elsif $mode == 'clone'                      # Cloning step
     require 'zt_admin/clone'                  # Copy Generic files
+
+  elsif $mode == 'api'
+    require 'zt_admin/api'                   # Copy API Generic files
 
   elsif $mode == 'generate'                   # Generate Admin directories and files
 
