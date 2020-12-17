@@ -17,7 +17,7 @@ module ZtAdmin
   file = File.open("#{$absolute_views_path}/_form.html.haml", 'w')
 
   file.puts ".row"
-  file.puts "#{TAB}.col-md-6"
+  file.puts "#{TAB}.col-ms-6"
   file.puts "#{TAB2}= simple_form_for([:admin, @#{$name}], html: {multipart: true}) do |f|"
 
   # Errors block

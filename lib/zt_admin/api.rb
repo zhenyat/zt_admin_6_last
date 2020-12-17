@@ -67,8 +67,8 @@ module ZtAdmin
     action_report "app/controllers/api/v1/samples_controller.rb"
     FileUtils.cp "#{generic_api}/app/controllers/api/v1/samples_controller.rb", "#{AppRoot}/app/controllers/api/v1"
 
-    action_report "app/controllers/api_controller.rb"
-    FileUtils.cp "#{generic_api}/app/controllers/api_controller.rb", "#{AppRoot}/app/controllers"
+    action_report "app/controllers/api/api_controller.rb"
+    FileUtils.cp "#{generic_api}/app/controllers/api/api_controller.rb", "#{AppRoot}/app/controllers/api"
 
     action_report "app/controllers/admin/accounts_controller.rb"
     FileUtils.cp "#{generic_api}/app/controllers/admin/accounts_controller.rb", "#{AppRoot}/app/controllers/admin"

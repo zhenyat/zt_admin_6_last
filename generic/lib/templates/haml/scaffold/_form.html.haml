@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .col-ms-6
     = simple_form_for(@<%= singular_table_name %>) do |f|
       /= f.error_notification
       = errors_for(@<%= singular_table_name %>)
@@ -19,10 +19,10 @@
 
       .form-actions
         .row
-          .col-md-4
+          .col-ms-4
             = f.submit :class => "btn btn-primary btn-sm"
           - unless @<%= singular_table_name %>.new_record?
-            .col-md-2
+            .col-ms-2
               = link_to t('actions.show'), @<%= singular_table_name %>,  class: 'btn btn-info btn-sm' unless @<%= singular_table_name %>.new_record?
-          .col-md-2
+          .col-ms-2
             = link_to t('actions.back'), <%= table_name %>_path, class: "btn btn-default btn-sm"
