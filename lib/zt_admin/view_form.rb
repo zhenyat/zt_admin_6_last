@@ -47,60 +47,10 @@ module ZtAdmin
     end
   end
 
-  # Rich Text Input field
-  file.puts "\n#{TAB*5}- if #{$model}.reflect_on_association(:rich_text_content).present?"
-  file.puts "#{TAB*6}= f.label t 'content'"
-  file.puts "#{TAB*6}.content-area= f.rich_text_area :content"
-
-  # Cover Image fields
-  file.puts "\n#{TAB*5}- if #{$model}.reflect_on_attachment(:cover_image).present?"
-  file.puts "#{TAB*6}%hr"
-  file.puts "#{TAB*6}.row"
-  file.puts "#{TAB*7}.col-offset-1.col-md-4"
-  file.puts "#{TAB*8}= f.label t 'images.cover_image'"
-  file.puts "#{TAB*6}.row"
-  file.puts "#{TAB*7}.col-md-4"
-  file.puts "#{TAB*8}= f.file_field :cover_image"
-  file.puts "#{TAB*6}%br"
-
-  file.puts "\n#{TAB*6}.row"
-  file.puts "#{TAB*7}- if @#{$name}.cover_image.attached?"
-  file.puts "#{TAB*8}.col-md-3"
-  file.puts "#{TAB*9}= image_tag @sample.cover_image.variant(resize_to_fit: [100, 100])"
-  file.puts "#{TAB*8}.col-md-3"
-  file.puts "#{TAB*9}= f.check_box :remove_cover_image"
-  file.puts "#{TAB*9}%i.fas.fa-trash"
-
-  # Images Gallery Fields
-  file.puts "\n#{TAB*5}- if #{$model}.reflect_on_attachment(:images).present?"
-  file.puts "#{TAB*6}%hr"
-  file.puts "#{TAB*6}.row"
-  file.puts "#{TAB*7}.col-md-4"
-  file.puts "#{TAB*8}= f.label t 'images.gallery'"
-  file.puts "#{TAB*6}.row"
-  file.puts "#{TAB*7}.col-md-4"
-  file.puts "#{TAB*8}= f.file_field :images, multiple: true"
-  file.puts "#{TAB*6}%br"
-  file.puts "#{TAB*6}.row"
-  file.puts "#{TAB*7}- if @#{$name}.images.attached?"
-  file.puts "#{TAB*8}- @#{$name}.images.each do |image|"
-  file.puts "#{TAB*9}.col-md-3"
-  file.puts "#{TAB*10}= image_tag image.variant(resize_to_fit: [100, 100])"
-  file.puts "#{TAB*10}= check_box_tag 'image_to_remove_ids[]', image.id"
-  file.puts "#{TAB*10}%i.fas.fa-trash"
-    
-  file.puts "#{TAB*4}%hr"
-  file.puts "\n#{TAB*4}.form_actions"
-  file.puts "#{TAB*5}.row"
-
-  file.puts "#{TAB*6}.col-sm-3"
-  file.puts "#{TAB*7}= f.submit t('actions.save'), class: 'btn btn-primary btn-sm'"
-
-  #file.puts "#{TAB*6}.col-sm-3"
-  #file.puts "#{TAB*7}= link_to t('actions.save'), admin_#{$name}_path, class: 'btn btn-info btn-sm' unless @#{$name}.new_record?"
-
-  file.puts "#{TAB*6}.col-sm-3"
-  file.puts "#{TAB*7}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-info btn-sm'"
+  # Rich Text & Images Input fields
+  file.puts "\n#{TAB*5}= render 'admin/shared/form_rich_text_content.html', f: f, object: @#{$name}"
+  file.puts "#{TAB*5}= render 'admin/shared/form_images.html', f: f, object: @#{$name}"
+  file.puts "#{TAB*5}= render 'admin/shared/form_actions.html', f: f, object: @#{$name}"
 
   file.close
 end

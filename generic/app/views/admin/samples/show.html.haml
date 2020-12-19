@@ -14,29 +14,6 @@
               %td= t "activerecord.attributes.sample.#{key}"
               %td= value
   
-      - if Sample.reflect_on_attachment(:cover_image).present? 
-        %tr
-          %td= t 'images.cover_image'
-          %td
-            - if @sample.cover_image.attached?
-              = image_tag @sample.cover_image.variant(resize_to_limit: [100, 100])
-        %tr
-          %td= t 'images.gallery'
-          %td
-            %tr
-              - if @sample.images.attached?
-                - @sample.images.each do |image|
-                  /%td= image_tag image.variant(resize_to_limit: [50, 50])
-                  %td{:style => "width:10%"}= image_tag image.variant(resize_to_limit: [50, 50])
-
-  - if Sample.reflect_on_association(:rich_text_content).present?
-    = t 'content'
-    .content-area= @sample.content
-
-  %br
-  .form_actions
-    .row
-      .col-md-2
-        = link_to t('actions.back'), admin_samples_path, class: 'btn btn-info btn-sm'
-      .col-md-2
-        = link_to t('actions.edit'), edit_admin_sample_path, class: 'btn btn-warning btn-sm'
+      = render 'admin/shared/show_images', object: @sample
+  = render 'admin/shared/show_rich_text_content', object: @sample
+  = render 'admin/shared/show_actions', object: @sample

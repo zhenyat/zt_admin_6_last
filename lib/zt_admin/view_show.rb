@@ -34,26 +34,10 @@ module ZtAdmin
   file.puts "#{TAB*7}%td= t " << '"activerecord.attributes.' << "#{$name}." << '#{key}"'
   file.puts "#{TAB*7}%td= value"
 
-  file.puts "\n#{TAB*3}- if #{$model}.reflect_on_attachment(:cover_image).present?"
-  file.puts "#{TAB*4}%tr"
-  file.puts "#{TAB*5}%td= t 'images.cover_image'"
-  file.puts "#{TAB*5}%td"
-  file.puts "#{TAB*6}- if #{$name}.cover_image.attached?"
-  file.puts "#{TAB*7}= image_tag #{$name}.cover_image.variant(resize_to_limit: [100, 100])"
-  file.puts "#{TAB*4}%tr"
-  file.puts "#{TAB*5}%td= t 'images.gallery'"
-  file.puts "#{TAB*5}%td"
-  file.puts "#{TAB*6}%tr"
-  file.puts "#{TAB*7}- if #{$name}.images.attached?"
-  file.puts "#{TAB*8}- #{$name}.images.each do |image|"
-  file.puts "#{TAB*9}%td{:style => 'width:10%'}= image_tag image.variant(resize_to_limit: [50, 50])"
-  file.puts "#{TAB}- if #{$model}.reflect_on_association(:rich_text_content).present?"
-  file.puts "#{TAB*2}= t 'content'"
-  file.puts "#{TAB*2}.content-area= @#{$name}.content"
-
-  file.puts "\n.form_actions"
-  file.puts "#{TAB}.row\n#{TAB*2}.col-md-2"
-  file.puts "#{TAB*3}= link_to t('actions.back'), admin_#{$names}_path, class: 'btn btn-primary btn-sm'"
+  # Images & Rich Text
+  file.puts "#{TAB*3}= render 'admin/shared/show_images', object: @#{$name}"
+  file.puts "#{TAB}= render 'admin/shared/show_rich_text_content', object: @#{$name}"
+  file.puts "#{TAB}= render 'admin/shared/show_actions', object: @#{$name}"
 
   file.close
 end

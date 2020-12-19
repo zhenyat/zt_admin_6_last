@@ -1,0 +1,7 @@
+%hr
+.form_actions
+  .row
+    .col-sm-3
+      = f.submit t('actions.save'), class: 'btn btn-primary btn-sm'
+    .col-sm-3
+      = link_to t('actions.back'), "admin_#{object.class.name.downcase}_path", class: 'btn btn-info btn-sm'

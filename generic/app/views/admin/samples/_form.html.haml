@@ -11,47 +11,6 @@
           = f.input :quantity
           = f.input :status, default: 0
 
-          - if Sample.reflect_on_association(:rich_text_content).present?
-            = f.label t 'content'
-            = f.rich_text_area :content
-
-          - if Sample.reflect_on_attachment(:cover_image).present?
-            %hr
-            .row
-              .col-md-4
-                = f.label t 'images.cover_image'
-            .row
-              .col-md-4
-                = f.file_field :cover_image
-            %br
-            .row
-              - if @sample.cover_image.attached?
-                .col-md-2
-                  = image_tag @sample.cover_image.variant(resize_to_fit: [100, 100])
-                .col-md-2
-                  = f.check_box :remove_cover_image
-                  %i.fas.fa-trash
-
-          - if Sample.reflect_on_attachment(:images).present?
-            %hr           
-            .row
-              .col-md-4
-                = f.label t 'images.gallery'
-            .row
-              .col-md-4
-                = f.file_field :images, multiple: true
-            %br
-            .row
-              - if @sample.images.attached?
-                - @sample.images.each do |image|
-                  .col-md-3
-                    = image_tag image.variant(resize_to_fit: [100, 100])
-                    = check_box_tag 'image_to_remove_ids[]', image.id
-                    %i.fas.fa-trash
-        %hr
-        .form_actions
-          .row
-            .col-sm-3
-              = f.submit t('actions.save'), class: 'btn btn-primary btn-sm'
-            .col-sm-3
-              = link_to t('actions.back'), admin_samples_path, class: 'btn btn-info btn-sm'
+          = render 'admin/shared/form_rich_text_content.html', f: f, object: @sample
+          = render 'admin/shared/form_images.html', f: f, object: @sample
+          = render 'admin/shared/form_actions.html', f: f, object: @sample
