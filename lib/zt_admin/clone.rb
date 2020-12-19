@@ -287,16 +287,16 @@ module ZtAdmin
     FileUtils.cp_r "#{views}/admin", "#{AppRoot}/app/views/"
 
     puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users' & 'samples):")
-    puts colored(MAGENTA, "#{TAB2}rails db:create")
-    puts colored(MAGENTA, "#{TAB2}rails action_text:install")
-    puts colored(MAGENTA, "#{TAB2}rails db:migrate")
-    puts colored(MAGENTA, "#{TAB2}rails db:seed")
+    puts colored(MAGENTA, "#{TAB*2}rails db:create")
+    puts colored(MAGENTA, "#{TAB*2}rails action_text:install")
+    puts colored(MAGENTA, "#{TAB*2}rails db:migrate")
+    puts colored(MAGENTA, "#{TAB*2}rails db:seed")
     puts colored(GRAY, "\n============================")
     puts colored(BLUE, "#{TAB}To generate API component run:")
-    puts colored(BLUE, "#{TAB2}rails g devise:install")
-    puts colored(BLUE, "#{TAB2}rails g devise_token_auth:install Account auth")
-    puts colored(BLUE, "#{TAB2}rails db:migrate")
-    puts colored(BLUE, "#{TAB2}zt_admin a[pi]")
+    puts colored(BLUE, "#{TAB*2}rails g devise:install")
+    puts colored(BLUE, "#{TAB*2}rails g devise_token_auth:install Account auth")
+    puts colored(BLUE, "#{TAB*2}rails db:migrate")
+    puts colored(BLUE, "#{TAB*2}zt_admin a[pi]")
     puts colored(GRAY, "\n============================\n")
 
   rescue Exception => error

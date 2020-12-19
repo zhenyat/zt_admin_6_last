@@ -19,11 +19,7 @@ WHITE   = 'white'
 YELLOW  = 'yellow'
 
 TAB   = '  '        # Two spaces - to be used instead of \t
-TAB2  = TAB  * 2
-TAB3  = TAB2 + TAB
-TAB4  = TAB  * 4
-TAB5  = TAB4 + TAB
-TAB6  = TAB  * 6
+
 
 # Special attribute cases (identified in *get_attributes*)
 $references_names    = []

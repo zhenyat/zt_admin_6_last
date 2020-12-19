@@ -2,7 +2,8 @@
 # Library of methods to generate generic files and files for a Model
 #
 # 23.01.2017  ZT
-################################################################################
+# 19.12.2020  Class name is added aka $klass
+################################################$################################
 require 'fileutils'
 
 module ZtAdmin
@@ -199,6 +200,7 @@ module ZtAdmin
 
   ##############################################################################
   # Gets Model names (capitalized and plural)
+  # 19.12.2020  Class name is added aka $klass
   ##############################################################################
   def self.get_names options
 
@@ -247,6 +249,8 @@ module ZtAdmin
         $name   = $model.downcase       # e.g.  city
         $names  = $name.pluralize       # e.g.  cities
       end
+
+      # $KLASS = $model.constantize       # Class name
 
       # Enumerated options
       $enum = options[:enum] if options[:enum].size > 0

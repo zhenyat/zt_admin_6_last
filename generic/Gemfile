@@ -50,7 +50,7 @@
 #   05.08.2020  Combo: Webpack + Bootstrap + Simple Form + Font Awesome + ...
 #   11.09.2020  Rails 6.0.3.3; pure webpecker is used
 #   17.10.2020  Ruby 2.7.2 / Rails 6.0.3.4 & some gems added / removed
-#   16.12.2020  Gem 'seedbank'
+#   19.12.2020  Gems 'seedbank' & 'ancestry'
 ################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -64,7 +64,8 @@ gem 'sqlite3'                      # Use sqlite3    as the database for Active R
 # gem 'pg'                         # Use postgresql as the database for Active Record
 # gem 'pg_search'                  # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
 # gem 'seed_dump'                  # https://github.com/rroblak/seed_dump
-gem 'seedbank'
+gem 'seedbank'                     # http://github.com/james2m/seedbank
+gem 'ancestry'                     # https://github.com/stefankroes/ancestry
 
 gem 'puma'                         # Use Puma as the app server
 gem 'sassc-rails'                  # Use SCSS for stylesheets

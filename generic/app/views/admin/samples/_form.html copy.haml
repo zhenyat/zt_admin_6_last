@@ -1,0 +1,46 @@
+.container
+  .row
+    .col-ms-6
+      = simple_form_for([:admin, @sample], html: {multipart: true}) do |f|
+        = f.error_notification message: t('messages.error_notification')
+
+        .form-inputs
+          = f.input :name
+          = f.input :title
+          = f.input :price
+          = f.input :quantity
+          = f.input :status, default: 0
+          = f.label t 'content'
+          = f.rich_text_area :content
+          .row
+            = f.label t 'images.cover_image'
+          .row
+            = f.file_field :cover_image
+          %br
+          .row
+            - if @sample.cover_image.attached?
+              .col-md-3
+                = image_tag @sample.cover_image.variant(resize_to_fit: [100, 100])
+              .col.-md-3
+                = f.check_box :remove_cover_image
+                %i.fas.fa-trash
+          %br           
+          .row
+            = f.label t 'images.gallery'
+          .row
+            = f.file_field :images, multiple: true
+          %br
+          .row
+            - if @sample.images.attached?
+              - @sample.images.each do |image|
+                .col-md-3
+                  = image_tag image.variant(resize_to_fit: [100, 100])
+                  = check_box_tag "image_to_remove_ids[]", image.id
+                  %i.fas.fa-trash
+        %br
+        .form_actions
+          .row
+            .col-sm-3
+              = f.submit t('actions.save'), class: 'btn btn-primary btn-sm'
+            .col-sm-3
+              = link_to t('actions.back'), admin_samples_path, class: 'btn btn-info btn-sm'
