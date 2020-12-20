@@ -93,7 +93,7 @@ module ZtAdmin
     FileUtils.cp "#{generic_api}/app/views/admin/shared/_admin_top_navigation.html.haml", "#{AppRoot}/app/views/admin/shared"
 
     puts colored(MAGENTA, "\n#{TAB}Run command now:")
-    puts colored(MAGENTA, "#{TAB*2}rails db:seed:accounts")
+    puts colored(MAGENTA, "#{TAB*2}rails db:seed:account")
 
   rescue Exception => error
     puts colored(RED, "\nACHTUNG! Something went wrong during API cloning process...")

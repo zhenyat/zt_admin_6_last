@@ -23,5 +23,5 @@ ru:
         description:            Описание
         price:                  Цена
         quantity:               Количество
+        position:               Позиция
         status:                 Статус
-

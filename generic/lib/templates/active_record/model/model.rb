@@ -49,7 +49,7 @@ class <%= class_name %> < <%= parent_class_name.classify %>
 <%- for attribute in attributes -%>
 <%- if attribute.name == 'position' -%>
 
-  before_save :set_position
+  include Positionable
 <%- end -%>
 <%- end -%>
 <%- if class_name == 'User' -%>
@@ -141,19 +141,5 @@ class <%= class_name %> < <%= parent_class_name.classify %>
     def authenticated?(remember_token)
       BCrypt::Password.new(remember_digest).is_password?(remember_token)
     end
-<%- else -%>
-<%- for attribute in attributes -%>
-<%- if attribute.name == 'position' -%>
-
-  private
-
-    def set_position
-      if self.id.blank?
-        last_item = <%= class_name %>.order(:position).last
-        self.position = last_item.blank? ? 1 : last_item.position.to_i + 1
-      end
-    end
-<%- end -%>
-<%- end -%>
 <%- end -%>
 end

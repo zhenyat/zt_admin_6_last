@@ -8,6 +8,8 @@
 #   title     - string
 #   price     - decimal, default: 0.0
 #   quantity  - integer, default: 0
+#   position  - sorting index:  integer, not NULL
+
 #   status    - enum { active (0) | archived (1) }
 #
 #   content     - Active Text attachement
@@ -17,8 +19,10 @@
 #   05.11.2020  ZT
 #   12.11.2020  Images handling shifted to Concerns
 #   15.11.2020  Corrected
+#   20.12.2020  Position added
 ###########################################################
 class Sample < ApplicationRecord
+  include Positionable
   include ImagesHandling
   has_rich_text :content
   enum status:  %w(active archived)

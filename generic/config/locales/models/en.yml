@@ -22,4 +22,6 @@ en:
         title:                  Title
         price:                  price
         quantity:               Quantity
+        position:               position
         status:                 Status
+        

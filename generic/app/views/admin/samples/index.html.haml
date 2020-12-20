@@ -2,6 +2,7 @@
 %table.table.table-hover
   %thead
     %tr
+      %th= Sample.human_attribute_name(:position)
       %th= Sample.human_attribute_name(:name)
       %th= Sample.human_attribute_name(:title)
       %th= Sample.human_attribute_name(:price)
@@ -13,6 +14,7 @@
   %tbody
     - @samples.each do |sample|
       %tr
+        %td= sample.position
         %td= sample.name
         %td= sample.title
         %td= sample.price

@@ -11,6 +11,7 @@
 #   05.11.2020          Samples migration added
 #   15.11.2020  2.21.0  bug fixed for images_handling.rb copying      
 #   16.12.20202 3.0.0   seedbank handling
+#   20.12.2020  3.4.0   positionable
 ################################################################################
 module ZtAdmin
 
@@ -137,8 +138,8 @@ module ZtAdmin
     ####    db    ####
     action_report "db/seeds/"
     create_dir "db/seeds"
-    FileUtils.cp "#{db}/seeds/users.seeds.rb", "#{AppRoot}/db/seeds"
-    FileUtils.cp "#{db}/seeds/samples.seeds.rb", "#{AppRoot}/db/seeds"
+    FileUtils.cp "#{db}/seeds/user.seeds.rb", "#{AppRoot}/db/seeds"
+    FileUtils.cp "#{db}/seeds/sample.seeds.rb", "#{AppRoot}/db/seeds"
 
     ### Get generic files in the *migrate* directory
     create_dir "db/migrate"
@@ -183,6 +184,9 @@ module ZtAdmin
 
     action_report "app/models/concerns/images_handling.rb"
     FileUtils.cp "#{models}/concerns/images_handling.rb", "#{AppRoot}/app/models/concerns"
+
+    action_report "app/models/concerns/positionable.rb"
+    FileUtils.cp "#{models}/concerns/positionable.rb", "#{AppRoot}/app/models/concerns"
 
     ### Get generic files in the *Controllers* directory
     action_report "app/controllers"
