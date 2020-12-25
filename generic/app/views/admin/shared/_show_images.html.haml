@@ -1,14 +1,16 @@
 - if object.class.name.constantize.reflect_on_attachment(:cover_image).present? 
-  %tr
-    %td= t 'images.cover_image'
-    %td
-      - if object.cover_image.attached?
-        = image_tag object.cover_image.variant(resize_to_limit: [100, 100])
-  %tr
-    %td= t 'images.gallery'
-    %td
+  %table.table.table-striped
+    %tbody
       %tr
-        - if object.images.attached?
-          - object.images.each do |image|
-            /%td= image_tag image.variant(resize_to_limit: [50, 50])
-            %td{:style => "width:10%"}= image_tag image.variant(resize_to_limit: [50, 50])
+        %td= t 'images.cover_image'
+        %td
+          - if object.cover_image.attached?
+            = image_tag object.cover_image.variant(resize_to_limit: [50, 50])
+
+- if object.images.attached?
+  %table.table.table-striped
+    %tbody
+      %tr
+        %td= t 'images.gallery'
+        - object.images.each do |image|
+          %td= image_tag image.variant(resize_to_limit: [50, 50])

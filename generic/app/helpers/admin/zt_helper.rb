@@ -13,7 +13,16 @@ module Admin::ZtHelper
     if status == 'active'
       image_tag('admin/check_mark.png', size: '12x15', alt: 'Active')
     else
-      image_tag('admin/minus_mark.png',   size: '12x15', alt: 'Archive')
+      image_tag('admin/minus_mark.png', size: '12x15', alt: 'Archive')
+    end
+  end
+
+  # Selects a hot mark to be displayed
+  def hot_mark hot
+    if hot 
+      image_tag('admin/check_mark.png', size: '12x15', alt: 'True')
+    else
+      image_tag('admin/minus_mark.png', size: '12x15', alt: 'False')
     end
   end
 end

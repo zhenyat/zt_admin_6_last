@@ -9,6 +9,7 @@
 #   02.08.2016  Updated with bootstrap
 #   03.08.2016  Bugs fixed
 #   19.12.2020  RichText & ActiveStorage Images fields are added
+#   25.12.2020  Ancestry
 ################################################################################
 module ZtAdmin
   relative_path = "#{$relative_views_path}/show.html.haml"
@@ -23,13 +24,37 @@ module ZtAdmin
   file.puts "#{TAB}%table.table.table-striped\n#{TAB*2}%tbody"
   file.puts "#{TAB*3}- @#{$name}.attributes.each do |key, value|"
 
-  file.puts "#{TAB*4}- if key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'"
-  file.puts "#{TAB*5}//skip these attributes"
-  file.puts "#{TAB*4}- else"
+  file.puts "#{TAB*4}- unless key == 'id' || key.include?('digest') || key == 'created_at' || key == 'updated_at'"
   file.puts "#{TAB*5}%tr"
+  
   file.puts "#{TAB*6}- if key == 'status'"
   file.puts "#{TAB*7}%td= t 'status.status'"
   file.puts "#{TAB*7}%td= status_mark @#{$name}.status"
+
+  file.puts "#{TAB*6}- elsif key == 'ancestry'"
+
+  file.puts "#{TAB*7}- if @" << "#{$name}.parent.present?"
+  file.puts "#{TAB*8}%td= t 'tree.parent'"
+  file.puts "#{TAB*8}- if #{$model}.column_names.include? 'title'"
+  file.puts "#{TAB*9}%td= " << '"#' << "{@" <<  "#{$name}" << ".parent.title} (id: #" << "{@" << "#{$name}" << '.ancestry})"'
+  file.puts "#{TAB*8}- elsif #{$model}.column_names.include? 'name'"
+  file.puts "#{TAB*9}%td= " << '"#' << "{@" <<  "#{$name}" << ".parent.name} (id: #" << "{@" << "#{$name}" << '.ancestry})"'
+  file.puts "#{TAB*8}- else"
+  file.puts "#{TAB*9}%td= " << '"#' << "{@" << "#{$name}" << '.ancestry})"'
+
+  file.puts "#{TAB*7}- if @#{$name}.children.present?"
+  file.puts "#{TAB*8}%td= t 'tree.children'"
+  file.puts "#{TAB*8}%td"
+  file.puts "#{TAB*9}- @#{$name}.children.each do |child|"
+  file.puts "#{TAB*10}- if #{$model}.column_names.include? 'title'"
+  file.puts "#{TAB*11}= " << '"#{child.title} (id=#{child.id}) |"'
+  file.puts "#{TAB*10}- elsif #{$model}.column_names.include? 'name'"
+  file.puts "#{TAB*11}= " << '"#{child.name} (id=#{child.id}) |"'
+  file.puts "#{TAB*10}- else"
+  file.puts "#{TAB*11}= " << '"#{child.id} |"'
+  file.puts "#{TAB*10}- unless child == @#{$name}.children.last"
+  file.puts "#{TAB*11}%br"
+
   file.puts "#{TAB*6}- else"
   file.puts "#{TAB*7}%td= t " << '"activerecord.attributes.' << "#{$name}." << '#{key}"'
   file.puts "#{TAB*7}%td= value"

@@ -27,7 +27,7 @@
   .row
     - if object.images.attached?
       - object.images.each do |image|
-        .col-md-3
+        .col-md-3.form-image-cell
           = image_tag image.variant(resize_to_fit: [100, 100])
           = check_box_tag 'image_to_remove_ids[]', image.id
           %i.fas.fa-trash
