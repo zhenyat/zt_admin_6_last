@@ -56,8 +56,8 @@ module ZtAdmin
 
 
     ####    db    ####
-    action_report "db/seeds/accounts.seeds.rb"
-    FileUtils.cp "#{generic_api}/db/seeds/accounts.seeds.rb", "#{AppRoot}/db/seeds"
+    action_report "db/seeds/account.seeds.rb"
+    FileUtils.cp "#{generic_api}/db/seeds/account.seeds.rb", "#{AppRoot}/db/seeds"
  
     ####    App   ####
 

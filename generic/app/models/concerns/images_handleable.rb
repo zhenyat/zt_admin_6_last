@@ -1,7 +1,7 @@
 ################################################################################
 #   ActiveStorage images are handled here
 ################################################################################
-module ImagesHandling
+module ImagesHandleable
   extend ActiveSupport::Concern
 
   included do

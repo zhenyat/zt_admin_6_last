@@ -31,3 +31,14 @@ en:
   images:
     cover_image:    Cover Image
     gallery:        Gallery
+
+  # Gem 'ancestry'
+  tree:
+    parent:         Parent
+    parents:        Parents         
+    child:          Child
+    children:       Children
+    ancestry:       Ancestry
+    ancestries:     Ancestries
+    descendant:     Descendant
+    descendants:    Descendants

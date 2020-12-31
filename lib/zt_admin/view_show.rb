@@ -43,17 +43,18 @@ module ZtAdmin
   file.puts "#{TAB*9}%td= " << '"#' << "{@" << "#{$name}" << '.ancestry})"'
 
   file.puts "#{TAB*7}- if @#{$name}.children.present?"
-  file.puts "#{TAB*8}%td= t 'tree.children'"
-  file.puts "#{TAB*8}%td"
-  file.puts "#{TAB*9}- @#{$name}.children.each do |child|"
-  file.puts "#{TAB*10}- if #{$model}.column_names.include? 'title'"
-  file.puts "#{TAB*11}= " << '"#{child.title} (id=#{child.id}) |"'
-  file.puts "#{TAB*10}- elsif #{$model}.column_names.include? 'name'"
-  file.puts "#{TAB*11}= " << '"#{child.name} (id=#{child.id}) |"'
-  file.puts "#{TAB*10}- else"
-  file.puts "#{TAB*11}= " << '"#{child.id} |"'
-  file.puts "#{TAB*10}- unless child == @#{$name}.children.last"
-  file.puts "#{TAB*11}%br"
+  file.puts "#{TAB*8}%tr"
+  file.puts "#{TAB*9}%td= t 'tree.children'"
+  file.puts "#{TAB*9}%td"
+  file.puts "#{TAB*10}- @#{$name}.children.each do |child|"
+  file.puts "#{TAB*11}- if #{$model}.column_names.include? 'title'"
+  file.puts "#{TAB*12}= " << '"#{child.title} (id=#{child.id})"'
+  file.puts "#{TAB*11}- elsif #{$model}.column_names.include? 'name'"
+  file.puts "#{TAB*12}= " << '"#{child.name} (id=#{child.id})"'
+  file.puts "#{TAB*11}- else"
+  file.puts "#{TAB*12}= " << '"#{child.id}"'
+  file.puts "#{TAB*11}- unless child == @#{$name}.children.last"
+  file.puts "#{TAB*12}%br"
 
   file.puts "#{TAB*6}- else"
   file.puts "#{TAB*7}%td= t " << '"activerecord.attributes.' << "#{$name}." << '#{key}"'

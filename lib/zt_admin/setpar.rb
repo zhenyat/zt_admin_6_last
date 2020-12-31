@@ -22,23 +22,29 @@ TAB   = '  '        # Two spaces - to be used instead of \t
 
 
 # Special attribute cases (identified in *get_attributes*)
-$references_names    = []
-$password_attribute  = nil
+$references_names   = []
+$password_attribute = nil
 
 # Enumerated options
 $enum = []
+
+# Other options
+$ancestry = false
+$content  = false
+$images   = false
+$position = false
 
 # Debug flag
 $debug = false
 
 module ZtAdmin
 
-  AppRoot          = `pwd`.chomp    # chomp without arguments removes "\n" or "\r\n" if any
-  MigratePath      = "#{AppRoot}/db/migrate"
-  ModelPath        = "#{AppRoot}/app/models"
-  AdminSharedPath  = "#{AppRoot}/app/views/admin/shared"
+  AppRoot         = `pwd`.chomp    # chomp without arguments removes "\n" or "\r\n" if any
+  MigratePath     = "#{AppRoot}/db/migrate"
+  ModelPath       = "#{AppRoot}/app/models"
+  AdminSharedPath = "#{AppRoot}/app/views/admin/shared"
   
-  current_dir      = AppRoot.split('/').last
+  current_dir = AppRoot.split('/').last
   if current_dir.include? '_'
     AppName = current_dir.split('_').map{|e| e.capitalize}.join
   elsif current_dir.include? '-'

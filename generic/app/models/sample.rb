@@ -23,7 +23,7 @@
 ###########################################################
 class Sample < ApplicationRecord
   include Positionable
-  include ImagesHandling
+  include ImagesHandleable
   has_rich_text :content
   enum status:  %w(active archived)
   

@@ -70,9 +70,23 @@ module ZtAdmin
     end
     line << ", " unless attr_name== $attr_names.last    # Non-last attribute
   end
+
   if $model == "User"
     line << ",  :password, :password_confirmation"      # add password to the permission list
   end
+
+  if $ancestry
+    line << ", :ancestry"
+  end
+
+  if $content
+    line << ", :content"
+  end
+
+  if $images
+    line << ", :cover_image, :remove_cover_image, images: []"
+  end
+
   line << ")\n#{TAB*2}end"
   file.puts line
 

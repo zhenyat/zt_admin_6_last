@@ -5,6 +5,7 @@
 #     ref: http://ruby-doc.org/stdlib-2.2.0/libdoc/optparse/rdoc/OptionParser.html#top
 #
 #   16.01.2017  ZT
+#   26.12.2020  New options
 ################################################################################
 require 'optparse'
 require 'optparse/time'
@@ -28,7 +29,8 @@ module ZtAdmin
       opt_parser = OptionParser.new do |opts|
         opts.banner  = "\nv.1 - for Rails 5 with Sprockets"
         opts.banner << "\nv.2 - for Rails 6 with Webpacker"
-        opts.banner << "\nv.3 (current) - API mode added\n"
+        opts.banner << "\nv.3 - API mode generation added"
+        opts.banner << "\nCurrent version: #{VERSION}\n"
         opts.banner << "\nUsage:#{TAB*2}zt_admin {i | init}     - Gemfile to be updated for further `bundle install`"
         opts.banner << "\n#{TAB*5}zt_admin {c | clone}    - generic files to be added"
         opts.banner << "\n#{TAB*5}                          including:  MVC User; VC sessions; VC pages/home"
@@ -36,7 +38,7 @@ module ZtAdmin
         opts.banner << "\n#{TAB*5}zt_admin {g | generate} <model_name> [options]"
         opts.banner << "\n#{TAB*5}zt_admin {d | destroy}  <model_name>"
         opts.banner << "\n\nExamples: zt_admin i\n#{TAB*5}zt_admin c\n#{TAB*5}zt_admin a\n#{TAB*5}zt_admin g Product -e category -d\n#{TAB*5}zt_admin destroy Product"
-
+        opts.banner << "\n#{TAB*5}zt_admin g Category -e status -a -c -i -p\n#{TAB*5}zt_admin d Category"
         opts.separator ""
         opts.separator "Specific options:"
 
@@ -44,6 +46,22 @@ module ZtAdmin
         opts.on("-e", "--enum ENUMERATED ATTRIBUTE",
                 "Requires the Model enum attribute for input field in a view form") do |enum|
           options.enum << enum
+        end
+
+        opts.on("-a", "--ancestry", "Sets permitted attribute 'ancestry'") do
+          $ancestry = true
+        end
+
+        opts.on("-c", "--content", "Sets permitted ActiveText 'content' attribute") do
+          $content = true
+        end
+
+        opts.on("-i", "--images", "Sets permitted ActiveStorage images attributes") do
+          $images = true
+        end
+
+        opts.on("-p", "--position", "Sets 'position' attribute handling") do
+          $position = true
         end
 
         opts.separator ""

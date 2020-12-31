@@ -31,3 +31,14 @@ ru:
   images:
     cover_image:    Обложка
     gallery:        Галерея
+
+  # Gem 'ancestry'
+  tree:
+    parent:         Предок
+    parents:        Предки         
+    child:          Потомок
+    children:       Потомки
+    ancestry:       Предок
+    ancestries:     Предки
+    descendant:     Потомок
+    descendants:    Потомки

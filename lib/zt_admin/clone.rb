@@ -12,6 +12,7 @@
 #   15.11.2020  2.21.0  bug fixed for images_handling.rb copying      
 #   16.12.20202 3.0.0   seedbank handling
 #   20.12.2020  3.4.0   positionable
+#   26.12.2020  3.7.0   heritable
 ################################################################################
 module ZtAdmin
 
@@ -182,8 +183,11 @@ module ZtAdmin
     action_report "app/models/sample.rb"
     FileUtils.cp "#{models}/sample.rb", "#{AppRoot}/app/models"
 
-    action_report "app/models/concerns/images_handling.rb"
-    FileUtils.cp "#{models}/concerns/images_handling.rb", "#{AppRoot}/app/models/concerns"
+    action_report "app/models/concerns/images_handleable.rb"
+    FileUtils.cp "#{models}/concerns/images_handleable.rb", "#{AppRoot}/app/models/concerns"
+
+    action_report "app/models/concerns/heritable.rb"
+    FileUtils.cp "#{models}/concerns/heritable.rb", "#{AppRoot}/app/models/concerns"
 
     action_report "app/models/concerns/positionable.rb"
     FileUtils.cp "#{models}/concerns/positionable.rb", "#{AppRoot}/app/models/concerns"
