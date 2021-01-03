@@ -1,33 +1,35 @@
-- if object.class.name.constantize.reflect_on_attachment(:cover_image).present?
-  %hr
-  .row
-    .col-md-4
-      = f.label t 'images.cover_image'
-  .row
-    .col-md-4
-      = f.file_field :cover_image
-  %br
-  .row
-    - if object.cover_image.attached?
-      .col-md-2
-        = image_tag object.cover_image.variant(resize_to_fit: [100, 100])
-      .col-md-2
-        = f.check_box :remove_cover_image
-        %i.fas.fa-trash
-
-- if object.class.name.constantize.reflect_on_attachment(:images).present?
-  %hr           
-  .row
-    .col-md-4
-      = f.label t 'images.gallery'
-  .row
-    .col-md-4
-      = f.file_field :images, multiple: true
-  %br
-  .row
-    - if object.images.attached?
-      - object.images.each do |image|
-        .col-md-3.form-image-cell
-          = image_tag image.variant(resize_to_fit: [100, 100])
-          = check_box_tag 'image_to_remove_ids[]', image.id
+- entity = object.class.name.constantize
+- if entity.included_modules.include?(ImagesHandleable)
+  - if entity.reflect_on_attachment(:cover_image).present?
+    %hr
+    .row
+      .col-md-4
+        = f.label t 'images.cover_image'
+    .row
+      .col-md-4
+        = f.file_field :cover_image
+    %br
+    .row
+      - if object.cover_image.attached?
+        .col-md-2
+          = image_tag object.cover_image.variant(resize_to_fit: [100, 100])
+        .col-md-2
+          = f.check_box :remove_cover_image
           %i.fas.fa-trash
+
+  - if entity.reflect_on_attachment(:images).present?
+    %hr           
+    .row
+      .col-md-4
+        = f.label t 'images.gallery'
+    .row
+      .col-md-4
+        = f.file_field :images, multiple: true
+    %br
+    .row
+      - if object.images.attached?
+        - object.images.each do |image|
+          .col-md-3.form-image-cell
+            = image_tag image.variant(resize_to_fit: [100, 100])
+            = check_box_tag 'image_to_remove_ids[]', image.id
+            %i.fas.fa-trash

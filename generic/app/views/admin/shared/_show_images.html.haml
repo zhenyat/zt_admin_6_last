@@ -1,16 +1,18 @@
-- if object.class.name.constantize.reflect_on_attachment(:cover_image).present? 
-  %table.table.table-striped
-    %tbody
-      %tr
-        %td= t 'images.cover_image'
-        %td
-          - if object.cover_image.attached?
-            = image_tag object.cover_image.variant(resize_to_limit: [50, 50])
+- entity = object.class.name.constantize
+- if entity.included_modules.include?(ImagesHandleable)
+  - if entity.reflect_on_attachment(:cover_image).present? 
+    %table.table.table-striped
+      %tbody
+        %tr
+          %td= t 'images.cover_image'
+          %td
+            - if object.cover_image.attached?
+              = image_tag object.cover_image.variant(resize_to_limit: [50, 50])
 
-- if object.images.attached?
-  %table.table.table-striped
-    %tbody
-      %tr
-        %td= t 'images.gallery'
-        - object.images.each do |image|
-          %td= image_tag image.variant(resize_to_limit: [50, 50])
+  - if object.images.attached?
+    %table.table.table-striped
+      %tbody
+        %tr
+          %td= t 'images.gallery'
+          - object.images.each do |image|
+            %td= image_tag image.variant(resize_to_limit: [50, 50])

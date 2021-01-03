@@ -192,6 +192,9 @@ module ZtAdmin
     action_report "app/models/concerns/positionable.rb"
     FileUtils.cp "#{models}/concerns/positionable.rb", "#{AppRoot}/app/models/concerns"
 
+    action_report "app/models/concerns/emailable.rb"
+    FileUtils.cp "#{models}/concerns/emailable.rb", "#{AppRoot}/app/models/concerns"
+
     ### Get generic files in the *Controllers* directory
     action_report "app/controllers"
 

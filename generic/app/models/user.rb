@@ -14,18 +14,16 @@
 #
 #  07.07.2016 ZT
 #  16.10.2020 Roles are changed
+#  01.01.2021 module Emailable added
 ################################################################################
 class User < ApplicationRecord
-  before_save {self.email.downcase!}
+  include Emailable
 
   enum role:   %w(manager admin superadmin)
   enum status: %w(active archived)
 
   validates :last_name,  presence: true
   validates :first_name, presence: true
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
 
   has_secure_password                      # validates presence of password & password_confirmation
   validates :password, length: {minimum: 8}
