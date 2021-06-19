@@ -21,7 +21,7 @@ Gem to generate Admin Scope files for RoR 6 App via CLI
 ## Development
 
 ```bash
-chruby 2.7.2
+chruby 3.0.1
 bundle gem zt_admin
 ```
 
@@ -40,7 +40,7 @@ rm zt_admin*.gem; git add .; gem build zt_admin.gemspec; gem install --local zt_
 ### Uninstall gem
 
 ```bash
-gem uninstall -i /Users/zhenya/.gem/ruby/2.7.1 zt_admin
+gem uninstall -i /Users/zhenya/.gem/ruby/3.0.0 zt_admin
 ```
 
 ## Usage
