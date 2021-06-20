@@ -4,7 +4,7 @@
 #   First phase to start Application Admin generation: gets generic Gemfile
 #
 #   28.01.2017  ZT
-#   16.08.2020  Last update
+#   20.06.2021  Bootstrap 4 + jQuery + popper.js
 ################################################################################
 
 module ZtAdmin
@@ -14,7 +14,7 @@ module ZtAdmin
     
     puts colored(MAGENTA, "Run commands now:")
     puts colored(MAGENTA, "#{TAB*2}bundle update; gem cleanup; bundle install")
-    puts colored(MAGENTA, "#{TAB*2}yarn add bootstrap jquery popper.js")
+    puts colored(MAGENTA, "#{TAB*2}yarn add bootstrap@4.5.3 jquery popper.js")
     puts colored(MAGENTA, "#{TAB*2}yarn add @fortawesome/fontawesome-free")
     # puts colored(MAGENTA, "#{TAB*2}yarn add react-bootstrap bootstrap react-router-dom")
     # puts colored(MAGENTA, "#{TAB*2}yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ")
