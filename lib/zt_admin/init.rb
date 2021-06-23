@@ -4,7 +4,8 @@
 #   First phase to start Application Admin generation: gets generic Gemfile
 #
 #   28.01.2017  ZT
-#   20.06.2021  Bootstrap 4 + jQuery + popper.js
+#   20.06.2021  Bootstrap 4 + jQuery + popper.js (v.3.12)
+#   20.06.2021  Bootstrap 5 - jQuery + @popperjs/core (v.3.13)
 ################################################################################
 
 module ZtAdmin
@@ -14,11 +15,15 @@ module ZtAdmin
     
     puts colored(MAGENTA, "Run commands now:")
     puts colored(MAGENTA, "#{TAB*2}bundle update; gem cleanup; bundle install")
-    puts colored(MAGENTA, "#{TAB*2}yarn add bootstrap@4.5.3 jquery popper.js")
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      puts colored(MAGENTA, "#{TAB*2}yarn add bootstrap@4.5.3 jquery popper.js")
+    else
+      puts colored(MAGENTA, "#{TAB*2}yarn add react-bootstrap bootstrap @popperjs/core react-router-dom")
+    end
     puts colored(MAGENTA, "#{TAB*2}yarn add @fortawesome/fontawesome-free")
-    # puts colored(MAGENTA, "#{TAB*2}yarn add react-bootstrap bootstrap react-router-dom")
     # puts colored(MAGENTA, "#{TAB*2}yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons ")
     # puts colored(MAGENTA, "#{TAB*2}yarn add @fortawesome/free-brands-svg-icons @fortawesome/react-fontawesome")
+    puts colored(MAGENTA, "#{TAB*2}ps aux | grep spring | grep -v 'grep' | awk '{print $2}' | xargs kill")
     puts colored(MAGENTA, "#{TAB*2}rails generate simple_form:install --bootstrap")
     puts colored(MAGENTA, "#{TAB*2}rails generate pundit:install")
     puts colored(MAGENTA, "#{TAB*2}zt_admin c[lone]")

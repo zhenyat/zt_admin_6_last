@@ -9,7 +9,6 @@ module ApplicationHelper
   # 15.12.2013  Created
   # 16.10.2020  'module_parent_name' to be used since Rails 6.1
   # 27.10.2020  asset image files renamed
-  # 23.06.2021  'language_switch_bootstrap' updated for Bootstrap 5 
   ##############################################################################
   def app_name
     Rails.application.class.module_parent_name
@@ -78,14 +77,14 @@ module ApplicationHelper
   end
 
   ##############################################################################
-  # *language_switch* method updated for Bootstrap 4
+  # *language_switch* method updated for Bootstrap
   #
   # 08.12.2015  ZT
   # 12.09.2016  updated for Admin (argument 'mode' added)
   # 09.01.2017  Fixing error: Attempting to generate a URL from non-sanitized request parameters!
   #             Solution: use *permit!* method:  params.merge(locale: loc).permit!
   ##############################################################################
-  def language_switch_bootstrap4 mode
+  def language_switch_bootstrap mode
     content_tag(:ul, class: 'dropdown-menu', id: 'switch') do
       I18n.available_locales.each do |loc|
         if mode == 'admin'
@@ -94,30 +93,6 @@ module ApplicationHelper
           locale_param = request.path == root_path ? root_path(locale: loc) : params.merge(locale: loc).permit!
         end
         concat content_tag(:li, (link_to I18n.t(:language, locale: loc), locale_param), class: (I18n.locale == loc ? "active" : ""))
-      end
-    end
-  end
-
-  ##############################################################################
-  # *language_switch* method updated for Bootstrap 5
-  #
-  # 08.12.2015  ZT
-  # 12.09.2016  updated for Admin (argument 'mode' added)
-  # 09.01.2017  Fixing error: Attempting to generate a URL from non-sanitized request parameters!
-  #             Solution: use *permit!* method:  params.merge(locale: loc).permit!
-  # 23.06.2021  Updated for Bootstrap 5
-  ##############################################################################
-  def language_switch_bootstrap mode
-    content_tag(:div, "aria-labelledby" => "navbarDropdown", class: "dropdown-menu") do
-      I18n.available_locales.each do |loc|
-        if mode == 'admin'
-          locale_param = request.path == admin_root_path ? admin_root_path(locale: loc) : params.merge(locale: loc).permit!
-        else
-          locale_param = request.path == root_path ? root_path(locale: loc) : params.merge(locale: loc).permit!
-        end
-        concat(content_tag(:div, class: "dropdown-item") do
-          concat content_tag(:div, (link_to I18n.t(:language, locale: loc), locale_param), class: (I18n.locale == loc ? "active" : ""))
-        end)
       end
     end
   end

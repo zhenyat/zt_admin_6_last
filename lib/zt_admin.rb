@@ -5,6 +5,7 @@
 #   29.01.2017  ZT
 #   14.12.2020  API is added
 #   26.12.2020  gem 'ancestry'
+#   20.06.2021  Bootstrap 5 - jQuery + @popperjs/core (v.13.0.0)
 ################################################################################
 require 'zt_admin/version'
 require 'zt_admin/setpar'
@@ -16,7 +17,7 @@ require 'active_support/dependencies/autoload'
 
 module ZtAdmin
   class Error < StandardError; end
-    
+  
   options = OptparseCommand.parse(ARGV)
   get_names options 
   

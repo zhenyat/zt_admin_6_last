@@ -13,6 +13,7 @@
 #   16.12.20202 3.0.0   seedbank handling
 #   20.12.2020  3.4.0   positionable
 #   26.12.2020  3.7.0   heritable
+#   20.06.2021  3.13.0  Bootstrap 5 
 ################################################################################
 module ZtAdmin
 
@@ -76,7 +77,11 @@ module ZtAdmin
 
     # webpack
     action_report "config/webpack/environment.js"
-    FileUtils.cp "#{config}/webpack/environment.js", "#{AppRoot}/config/webpack"
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      FileUtils.cp "#{config}/webpack/environment.B4.js", "#{AppRoot}/config/webpack/environment.js"
+    else
+      FileUtils.cp "#{config}/webpack/environment.js", "#{AppRoot}/config/webpack"
+    end
 
     ###   Locales
     # Directory: config/locales/defaults
@@ -233,8 +238,12 @@ module ZtAdmin
     FileUtils.cp_r "#{helpers}/admin", "#{AppRoot}/app/helpers"
 
     action_report "app/helpers/application_helper.rb"
-    FileUtils.cp "#{helpers}/application_helper.rb", "#{AppRoot}/app/helpers"
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      FileUtils.cp "#{helpers}/application_helper.B4.rb", "#{AppRoot}/app/helpers/application_helper.rb"
+    else
+      FileUtils.cp "#{helpers}/application_helper.rb", "#{AppRoot}/app/helpers"
 
+    end
     action_report "app/helpers/sessions_helper.rb"
     FileUtils.cp "#{helpers}/sessions_helper.rb", "#{AppRoot}/app/helpers"
 
@@ -242,7 +251,11 @@ module ZtAdmin
     action_report "app/javascript"
 
     action_report "app/javascript/packs/application.js"
-    FileUtils.cp "#{javascript}/packs/application.js", "#{AppRoot}/app/javascript/packs"
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      FileUtils.cp "#{javascript}/packs/application.B4.js", "#{AppRoot}/app/javascript/packs/application.js"
+    else
+      FileUtils.cp "#{javascript}/packs/application.js", "#{AppRoot}/app/javascript/packs"
+    end
 
     action_report "app/javascript/stylesheets"
     FileUtils.cp_r "#{javascript}/stylesheets", "#{AppRoot}/app/javascript/"
@@ -292,10 +305,22 @@ module ZtAdmin
     # Directory *shared*
     create_dir "app/views/shared"
     FileUtils.cp_r "#{views}/shared", "#{AppRoot}/app/views/"
-
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      File.delete("#{AppRoot}/app/views/shared/_top_navigation.html.erb") if File.exist?("#{AppRoot}/app/views/shared/_top_navigation.html.erb")
+      File.mv("#{AppRoot}/app/views/shared/_top_navigation.B4.html.erb") if File.exist?("#{AppRoot}/app/views/shared/_top_navigation.html.erb")
+    else
+      File.delete("#{AppRoot}/app/views/shared/_top_navigation.B4.html.erb") if File.exist?("#{AppRoot}/app/views/shared/_top_navigation.B4.html.erb")
+    end
+    
     # Directory *admin*
     create_dir "app/views/admin/"
     FileUtils.cp_r "#{views}/admin", "#{AppRoot}/app/views/"
+    if ZtAdmin::VERSION[0..3] == '3.12'
+      File.delete("#{AppRoot}/app/views/admin/shared/_admin_top_navigation.html.haml") if File.exist?("#{AppRoot}/app/views/admin/shared/_top_navigation.html.haml")
+      FileUtils.mv "#{AppRoot}/app/views/admin/shared/_admin_top_navigation.B4.html.haml", "#{AppRoot}/app/views/admin/shared/_admin_top_navigation.html.haml"
+    else
+      File.delete("#{AppRoot}/app/views/admin/shared/_admin_top_navigation.B4.html.haml") if File.exist?("#{AppRoot}/app/views/admin/shared/_admin_top_navigation.B4.html.haml")
+    end
 
     puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users' & 'samples):")
     puts colored(MAGENTA, "#{TAB*2}rails db:create")
