@@ -6,6 +6,7 @@
 #
 #   16.01.2017  ZT
 #   26.12.2020  New options
+#   13.11.2021  uuid option
 ################################################################################
 require 'optparse'
 require 'optparse/time'
@@ -37,7 +38,7 @@ module ZtAdmin
         opts.banner << "\n#{TAB*5}zt_admin {a | api}      - API generic files to be added"
         opts.banner << "\n#{TAB*5}zt_admin {g | generate} <model_name> [options]"
         opts.banner << "\n#{TAB*5}zt_admin {d | destroy}  <model_name>"
-        opts.banner << "\n\nExamples: zt_admin i\n#{TAB*5}zt_admin c\n#{TAB*5}zt_admin a\n#{TAB*5}zt_admin g Product -e category -d\n#{TAB*5}zt_admin destroy Product"
+        opts.banner << "\n\nExamples: zt_admin i --uuid\n#{TAB*5}zt_admin c -u\n#{TAB*5}zt_admin a\n#{TAB*5}zt_admin g Product -e category -d\n#{TAB*5}zt_admin destroy Product"
         opts.banner << "\n#{TAB*5}zt_admin g Category -e status -a -c -i -p\n#{TAB*5}zt_admin d Category"
         opts.separator ""
         opts.separator "Specific options:"
@@ -62,6 +63,12 @@ module ZtAdmin
 
         opts.on("-p", "--position", "Sets 'position' attribute handling") do
           $position = true
+        end
+
+        opts.separator ""
+        opts.separator "Init / Clone options:"
+        opts.on("-u", "--uuid", "Applies UUID (universally unique IDentifier) to 'Entity ID'") do
+          $uuid = true
         end
 
         opts.separator ""

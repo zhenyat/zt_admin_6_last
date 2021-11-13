@@ -14,6 +14,7 @@
 #   20.12.2020  3.4.0   positionable
 #   26.12.2020  3.7.0   heritable
 #   20.06.2021  3.13.0  Bootstrap 5 
+#   13.11.2021  3.15.0  UUID generation
 ################################################################################
 module ZtAdmin
 
@@ -74,6 +75,11 @@ module ZtAdmin
 
     action_report "config/initializers/zt_load.rb"
     FileUtils.cp "#{config}/initializers/zt_load.rb", "#{AppRoot}/config/initializers"
+
+    if $uuid
+      action_report "config/initializers/generators.rb"
+      FileUtils.cp "#{config}/initializers/generators.rb", "#{AppRoot}/config/initializers"
+    end
 
     # webpack
     action_report "config/webpack/environment.js"
@@ -151,12 +157,24 @@ module ZtAdmin
     create_dir "db/migrate"
     current_dt = Time.now
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000).to_s
-    action_report "db/migrate/#{timestamp}_create_users.rb"
-    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_users.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_users.rb"
+
+    if $uuid
+      action_report "db/migrate/#{timestamp}_enable_uuid.rb"
+      FileUtils.cp "#{db}/migrate/TIMESTAMP_enable_uuid.rb", "#{AppRoot}/db/migrate/#{timestamp}_enable_uuid.rb"
+      users_migration_file   = "#{db}/migrate/TIMESTAMP_create_users_uuid.rb"
+      samples_migration_file = "#{db}/migrate/TIMESTAMP_create_samples_uuid.rb"
+    else
+      users_migration_file   = "#{db}/migrate/TIMESTAMP_create_users.rb"
+      samples_migration_file = "#{db}/migrate/TIMESTAMP_create_samples.rb"
+    end
 
     timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 2).to_s
+    action_report "db/migrate/#{timestamp}_create_users.rb"
+    FileUtils.cp users_migration_file, "#{AppRoot}/db/migrate/#{timestamp}_create_users.rb"
+
+    timestamp  = current_dt.strftime("%Y%m%d") + (current_dt.to_i/10000 + 4).to_s
     action_report "db/migrate/#{timestamp}_create_samples.rb"
-    FileUtils.cp "#{db}/migrate/TIMESTAMP_create_samples.rb", "#{AppRoot}/db/migrate/#{timestamp}_create_samples.rb"
+    FileUtils.cp samples_migration_file, "#{AppRoot}/db/migrate/#{timestamp}_create_samples.rb"
 
     ####    App   ####
 

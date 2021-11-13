@@ -63,13 +63,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 gem 'rails', '6.1.4.1'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
-gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
+# gem 'sqlite3'                    # Use sqlite3    as the database for Active Record
 # gem 'sqlite3', groups: [:test, :development]
 # gem 'mysql2'                     # Use mysql      as the database for Active Record
-# gem 'pg'                         # Use postgresql as the database for Active Record
-# gem 'pg_search'                  # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
+gem 'pg'                           # Use postgresql as the database for Active Record
+gem 'pg_search'                    # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
 gem 'seed_dump'                    # https://github.com/rroblak/seed_dump
 gem 'seedbank'                     # http://github.com/james2m/seedbank
+gem 'securerandom'                 # UUID
 gem 'ancestry'                     # https://github.com/stefankroes/ancestry
 
 gem 'puma'                         # Use Puma as the app server
