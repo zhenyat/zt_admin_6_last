@@ -6,6 +6,7 @@
 #   Source: http://railscasts.com/episodes/85-yaml-configuration-file
 #
 #   11.10.2016  ZT  Inherited from BKC 95km
+#   14.11.2021  Russian Regions
 ################################################################################
 
 # Gets default App configuration parameters
@@ -25,4 +26,10 @@ end
 filename = 'config/zt_config/settings.rb'
 if File.exists? "#{Rails.root}/#{filename}"
   eval File.read("#{Rails.root}/#{filename}")
+end
+
+# Gets Russian Regions as array ZT_RUSSIAN_REGIONS[]
+filename = 'config/zt_config/russian_regions.yml'
+if File.exists? "#{Rails.root}/#{filename}"
+  ZT_RUSSIAN_REGIONS = YAML.load_file("#{Rails.root}/#{filename}")
 end
