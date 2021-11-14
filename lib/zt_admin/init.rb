@@ -14,7 +14,6 @@ module ZtAdmin
     if $uuid
       FileUtils.cp "#{generic}/Gemfile_uuid", "#{AppRoot}/Gemfile"
     else
-      puts "---- NO"
       FileUtils.cp "#{generic}/Gemfile", AppRoot
     end
     puts colored GREEN, "\File 'Gemfile' has been updated"
