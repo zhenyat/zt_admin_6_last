@@ -158,12 +158,17 @@ module ZtAdmin
     attributes  = []    # to be array aka:  ['string:name', 'integer:status']
 
     file_list   = Dir.entries(MigratePath)
+    puts "ZT! names: #{$names}"
+    puts "ZT! file_list: #{file_list}"
+    
     file_list.each do |f|
+      puts "ZT! in file_list: #{f}"
       filename = f if f.include? "create_#{$names}"   # find a proper migration file
     end
-
+    puts "ZT! filename: #{filename}"
     if filename
       file_in = File.open("#{MigratePath}/#{filename}", 'r')
+      
       lines   = file_in.readlines
 
       # Collect attributes parsing lines of a migration file
@@ -229,20 +234,30 @@ module ZtAdmin
 
       # Define names
       upper_count = ARGV[1].scan(/\p{Upper}/).count  # Number of uppercase characters
-
+puts "+++ ZT! ARGV[1] = #{ARGV[1]}"
       if upper_count > 1                # Compound name (e.g. RedWineGlass)
-        $model  = ARGV[1]
-        $models = $model.pluralize
-        $name   = ARGV[1][0].downcase
-        string  = ARGV[1][1..-1]
-        string.chars do |c|
-          if c.match(/\p{Upper}/)
-            $name << '_' << c.downcase
-          else
-            $name << c
+        if ARGV[1].include? '::'
+          arr = ARGV[1].split('::')
+          $model  = arr[1]
+          $models = $model.pluralize
+          $name   = $model.downcase
+          $names  = $name.pluralize
+puts "+++ ZT! model = #{$model}"
+puts "+++ ZT! names = #{$names}"
+        else
+          $model  = ARGV[1]
+          $models = $model.pluralize
+          $name   = ARGV[1][0].downcase
+          string  = ARGV[1][1..-1]
+          string.chars do |c|
+            if c.match(/\p{Upper}/)
+              $name << '_' << c.downcase
+            else
+              $name << c
+            end
           end
+          $names = $name.pluralize
         end
-        $names = $name.pluralize
       else                              # Simple name (e.g. User)
         $model  = ARGV[1].capitalize    # e.g.  City
         $models = $model.pluralize      # e.g.  Cities
