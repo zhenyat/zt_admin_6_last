@@ -20,7 +20,7 @@ module ZtAdmin
     file_out = File.open "#{AppRoot}/config/routes.rb", "w"   # Create new file
     lines.each do |line|
       if line.match("Add new admin resources")
-        file_out.puts "#{TAB*4}resources :#{$names}"  # Add resources to Admin namespace
+        file_out.puts "#{TAB*4}resources :#{$name_plural}"  # Add resources to Admin namespace
       end
       file_out.puts line                             # Just copy an original line
     end

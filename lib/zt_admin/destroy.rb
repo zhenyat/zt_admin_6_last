@@ -11,24 +11,24 @@ module ZtAdmin
   admin_path    = "#{AppRoot}/#{relative_path}"
 
   if File.exist? admin_path
-    file = "#{admin_path}/#{$names}_controller.rb"
+    file = "#{admin_path}/#{$name_plural}_controller.rb"
     if File.exist? file
       File.delete file
-      puts colored(RED,  "#{TAB}remove     ") + "#{relative_path}/#{$names}_controller.rb"
+      puts colored(RED,  "#{TAB}remove     ") + "#{relative_path}/#{$name_plural}_controller.rb"
     end
   end
 
   # Delete views
   view_relative_path = 'app/views/admin'
-  views_path    = "#{AppRoot}/#{view_relative_path}/#{$names}"
+  views_path    = "#{AppRoot}/#{view_relative_path}/#{$name_plural}"
 
   if File.exist? views_path
     FileUtils.rm_r views_path
-    puts colored(RED,  "#{TAB}remove     ") + "#{view_relative_path}/#{$names}"
+    puts colored(RED,  "#{TAB}remove     ") + "#{view_relative_path}/#{$name_plural}"
   end
 
   # Delete Model helpers
-  helper_file   = "app/helpers/admin/#{$names}_helper.rb"
+  helper_file   = "app/helpers/admin/#{$name_plural}_helper.rb"
   absolute_path = "#{AppRoot}/#{helper_file}"
 
   if File.exist?(absolute_path)

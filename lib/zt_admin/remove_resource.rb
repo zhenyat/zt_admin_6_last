@@ -18,7 +18,7 @@ module ZtAdmin
 
     file_out = File.open "#{AppRoot}/config/routes.rb", "w"   # Create new file
     lines.each do |line|
-      file_out.puts line unless line.match("resources :#{$names}")
+      file_out.puts line unless line.match("resources :#{$name_plural}")
     end
     file_out.close
 

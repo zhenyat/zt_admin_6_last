@@ -17,7 +17,7 @@ module ZtAdmin
   Dir.mkdir(admin_path) unless File.exist?(admin_path)
 
   # Controller file
-  relative_path = "app/controllers/admin/#{$names}_controller.rb"
+  relative_path = "app/controllers/admin/#{$name_plural}_controller.rb"
   absolute_path = "#{AppRoot}/#{relative_path}"
   action_report relative_path
 
@@ -25,11 +25,11 @@ module ZtAdmin
 
   # Generate controller code
 
-  file.puts "class Admin::#{$models}Controller < Admin::BaseController"
+  file.puts "class Admin::#{$model_plural}Controller < Admin::BaseController"
   file.puts "#{TAB}before_action :set_#{$name}, only: [:show, :edit, :update,:destroy]"
 
-  file.puts "\n#{TAB}def index\n#{TAB*2}@#{$names} = policy_scope(#{$model})\n#{TAB}end"
-#  file.puts "\n#{TAB}def index\n#{TAB*2}@#{$names} = #{$model}.all\n#{TAB*2}authorize @#{$names}\n#{TAB}end"
+  file.puts "\n#{TAB}def index\n#{TAB*2}@#{$name_plural} = policy_scope(#{$model})\n#{TAB}end"
+#  file.puts "\n#{TAB}def index\n#{TAB*2}@#{$name_plural} = #{$model}.all\n#{TAB*2}authorize @#{$name_plural}\n#{TAB}end"
 
   file.puts "\n#{TAB}def show\n#{TAB*2}authorize @#{$name}\n#{TAB}end"
 
@@ -53,7 +53,7 @@ module ZtAdmin
   file.puts "\n#{TAB}def destroy\n#{TAB*2}authorize @#{$name}"
   file.puts "#{TAB*2}@#{$name}.destroy"
   file.puts "#{TAB*2}flash[:success] = t('messages.deleted', model: @#{$name}.class.model_name.human)"
-  file.puts "#{TAB*2}redirect_to admin_#{$names}_path\n#{TAB}end"
+  file.puts "#{TAB*2}redirect_to admin_#{$name_plural}_path\n#{TAB}end"
 
   file.puts "\n#{TAB}private"
 

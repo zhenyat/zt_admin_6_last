@@ -15,14 +15,14 @@ module ZtAdmin
 
   file = File.open("#{$absolute_views_path}/index.html.haml", 'w')
 
-  #file.puts "\n%h1= t('actions.listing', model: @#{$names}.first.class.model_name.human)\n"    # Page Title
+  #file.puts "\n%h1= t('actions.listing', model: @#{$name_plural}.first.class.model_name.human)\n"    # Page Title
   file.puts "%h1= t #{$model}.model_name.human(count: 2)"    # Page Title
 
   # Table heads line
   file.puts "%table.table.table-hover\n#{TAB}%thead\n#{TAB*2}%tr"
 
   $attr_names.each do |attr_name|
-  #  file.puts "#{TAB*3}%th= " << '"#{@' << "#{$names}.first.class.human_attribute_name(:#{attr_name})" << '}"' unless attr_name.include?('password') || attr_name.include?('remember') || attr_name.include?('status')
+  #  file.puts "#{TAB*3}%th= " << '"#{@' << "#{$name_plural}.first.class.human_attribute_name(:#{attr_name})" << '}"' unless attr_name.include?('password') || attr_name.include?('remember') || attr_name.include?('status')
     file.puts "#{TAB*3}%th= " << "#{$model}.human_attribute_name(:#{attr_name})" unless attr_name.include?('password') || attr_name.include?('remember') || attr_name.include?('status')
   end
   file.puts "#{TAB*3}%th= t 'status.status'"
@@ -30,7 +30,7 @@ module ZtAdmin
 
   #Table body
   file.puts "\n  %tbody"
-  file.puts "    - @#{$names}.each do |#{$name}|"
+  file.puts "    - @#{$name_plural}.each do |#{$name}|"
   file.puts "      %tr"
   $attr_names.each_with_index do |attr_name, index|
     if $attr_types[index] == 'references'

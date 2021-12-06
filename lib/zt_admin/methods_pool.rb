@@ -90,15 +90,15 @@ module ZtAdmin
     puts colored CYAN, "absolute view path = #{$absolute_views_path}"
     puts colored CYAN, "relative view path = #{$relative_views_path}"
 
-    puts colored CYAN, "$name  = #{$name},  $names  = #{$names}"
-    puts colored CYAN, "$model = #{$model}, $models = #{$models}"
+    puts colored CYAN, "$name  = #{$name},  $name_plural  = #{$name_plural}"
+    puts colored CYAN, "$model = #{$model}, $model_plural = #{$model_plural}"
   end
 
   ##############################################################################
   # Creates Admin views path for a Model
   ##############################################################################
   def self.create_views_path
-    $relative_views_path = "app/views/admin/#{$names}"
+    $relative_views_path = "app/views/admin/#{$name_plural}"
     $absolute_views_path = "#{AppRoot}/#{$relative_views_path}"
     action_report $relative_views_path
 
@@ -159,7 +159,7 @@ module ZtAdmin
 
     file_list   = Dir.entries(MigratePath)
     file_list.each do |f|
-      filename = f if f.include? "create_#{$names}"   # find a proper migration file
+      filename = f if f.include? "create_#{$name_plural}"   # find a proper migration file
     end
 
     if filename
@@ -232,7 +232,7 @@ module ZtAdmin
 
       if upper_count > 1                # Compound name (e.g. RedWineGlass)
         $model  = ARGV[1]
-        $models = $model.pluralize
+        $model_plural = $model.pluralize
         $name   = ARGV[1][0].downcase
         string  = ARGV[1][1..-1]
         string.chars do |c|
@@ -242,12 +242,12 @@ module ZtAdmin
             $name << c
           end
         end
-        $names = $name.pluralize
+        $name_plural = $name.pluralize
       else                              # Simple name (e.g. User)
         $model  = ARGV[1].capitalize    # e.g.  City
-        $models = $model.pluralize      # e.g.  Cities
+        $model_plural = $model.pluralize      # e.g.  Cities
         $name   = $model.downcase       # e.g.  city
-        $names  = $name.pluralize       # e.g.  cities
+        $name_plural  = $name.pluralize       # e.g.  cities
       end
 
       # $KLASS = $model.constantize       # Class name
