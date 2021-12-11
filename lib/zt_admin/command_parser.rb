@@ -80,16 +80,22 @@ module ZtAdmin
         end
 
         # No argument, shows at tail.  This will print an options summary.
-        opts.on_tail("-h", "--help", "Show this message") do
+        opts.on("-h", "--help", "Show this message") do
           puts opts
           exit
         end
 
         # Another typical switch to print the version.
-        opts.on_tail("-v", "--version", "Show version\n\n") do
+        opts.on("-v", "--version", "Show version\n\n") do
           puts VERSION
           exit
         end
+
+        # Batch procedures
+        opts.separator ""
+        opts.separator "Batch procedures:"
+        opts.separator "#{TAB*2}zt_update.sh:#{TAB*4}Updates gem 'zt_admin' according to the last code change\n"
+        opts.separator "#{TAB*2}zt_batch.sh:#{TAB*4} Applies gem 'zt_admin' to an App\n"
       end
 
       opt_parser.parse!(args)
