@@ -57,21 +57,22 @@
 #   05.09.2021  Ruby 3.0.2 / Rails 6.1.4.1
 #   13.11.2021  gems 'securerandom' & 'countries' added
 #   03.12.2021  Ruby 3.0.3
-###############################################################################
+#   12.12.2021  Pattern for Gemfile
+################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 gem 'rails', '6.1.4.1'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
-# gem 'sqlite3'                    # Use sqlite3    as the database for Active Record
-# gem 'sqlite3', groups: [:test, :development]
-# gem 'mysql2'                     # Use mysql      as the database for Active Record
-gem 'pg'                           # Use postgresql as the database for Active Record
-gem 'pg_search'                    # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
+gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
+gem 'mysql2'                     # Use mysql      as the database for Active Record
+gem 'pg'                         # Use postgresql as the database for Active Record
+gem 'pg_search'                  # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rails-pri-pomoschi-postgresql
 gem 'seed_dump'                    # https://github.com/rroblak/seed_dump
-gem 'seedbank'                     # http://github.com/james2m/seedbank
 gem 'securerandom'                 # UUID
+gem 'seedbank'                     # http://github.com/james2m/seedbank
+
 gem 'ancestry'                     # https://github.com/stefankroes/ancestry
 
 gem 'puma'                         # Use Puma as the app server

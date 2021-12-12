@@ -4,6 +4,7 @@
 #
 #   09.07.2020  ZT
 #   17.10.2020  Last update (AppName definition)
+#   12.12.2021  database option
 ################################################################################
 
 # Constants
@@ -20,6 +21,7 @@ YELLOW  = 'yellow'
 
 TAB   = '  '        # Two spaces - to be used instead of \t
 
+DATABASES_LIST = 'mysql, postgresql, sqlite (default)'
 
 # Special attribute cases (identified in *get_attributes*)
 $references_names   = []
@@ -31,8 +33,10 @@ $enum = []
 # Other options
 $ancestry = false
 $content  = false
+$dbname   = 'sqlite'
 $images   = false
 $position = false
+$uuid     = false
 
 # Debug flag
 $debug = false

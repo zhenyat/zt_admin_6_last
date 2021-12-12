@@ -7,6 +7,7 @@
 #   16.01.2017  ZT
 #   26.12.2020  New options
 #   13.11.2021  uuid option
+#   12.12.2021  database option
 ################################################################################
 require 'optparse'
 require 'optparse/time'
@@ -38,7 +39,7 @@ module ZtAdmin
         opts.banner << "\n#{TAB*5}zt_admin {a | api}      - API generic files to be added"
         opts.banner << "\n#{TAB*5}zt_admin {g | generate} <model_name> [options]"
         opts.banner << "\n#{TAB*5}zt_admin {d | destroy}  <model_name>"
-        opts.banner << "\n\nExamples: zt_admin i --uuid\n#{TAB*5}zt_admin c -u\n#{TAB*5}zt_admin a\n#{TAB*5}zt_admin g Product -e category -d\n#{TAB*5}zt_admin destroy Product"
+        opts.banner << "\n\nExamples: zt_admin i --uuid\n#{TAB*5}zt_admin i --database mysql\n#{TAB*5}zt_admin c -u\n#{TAB*5}zt_admin a\n#{TAB*5}zt_admin g Product -e category -d\n#{TAB*5}zt_admin destroy Product"
         opts.banner << "\n#{TAB*5}zt_admin g Category -e status -a -c -i -p\n#{TAB*5}zt_admin d Category"
         opts.separator ""
         opts.separator "Specific options:"
@@ -67,8 +68,14 @@ module ZtAdmin
 
         opts.separator ""
         opts.separator "Init / Clone options:"
+
         opts.on("-u", "--uuid", "Applies UUID (universally unique IDentifier) to 'Entity ID'") do
-          $uuid = true
+          $uuid   = true
+          $dbname = 'postgresql'
+        end
+
+        opts.on("--database name", "Select a database: #{DATABASES_LIST}") do |dbname|
+          $dbname = dbname
         end
 
         opts.separator ""
@@ -86,7 +93,7 @@ module ZtAdmin
         end
 
         # Another typical switch to print the version.
-        opts.on("-v", "--version", "Show version\n\n") do
+        opts.on("-v", "--version", "Show version\n") do
           puts VERSION
           exit
         end
