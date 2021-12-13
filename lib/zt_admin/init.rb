@@ -12,7 +12,6 @@
 
 module ZtAdmin
   begin
-    puts "ZT!===== #{$uuid} / #{$dbname}"
     if ($uuid && $dbname != 'postgresql')
       puts colored(RED, "#{TAB}uuid is applied with PostgreSQL only!")
       exit
