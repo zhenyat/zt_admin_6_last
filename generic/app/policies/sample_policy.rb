@@ -5,7 +5,7 @@ class SamplePolicy < ApplicationPolicy
     def resolve
       if (user.superadmin? || user.admin? || user.manager?)
         scope.all
-        else
+      else
         nil
       end
     end
