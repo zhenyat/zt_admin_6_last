@@ -5,6 +5,7 @@
 #   Generates policy file for a Model
 #
 #   30.01.2017  ZT
+#   13.12.2021  minor fixing 
 ################################################################################
 
 module ZtAdmin
@@ -19,7 +20,7 @@ module ZtAdmin
   file.puts "\n#{TAB}# For index"
   file.puts "#{TAB}class Scope < Scope"
   file.puts "#{TAB*2}def resolve"
-  file.puts "#{TAB*3}if (user.superadmin? || user.admin? || user.manager?)\n#{TAB*4}scope.all\n#{TAB*4}else\n#{TAB*4}nil\n#{TAB*3}end"
+  file.puts "#{TAB*3}if (user.superadmin? || user.admin? || user.manager?)\n#{TAB*4}scope.all\n#{TAB*3}else\n#{TAB*4}nil\n#{TAB*3}end"
   file.puts "#{TAB*2}end"
   file.puts "#{TAB}end"
 
