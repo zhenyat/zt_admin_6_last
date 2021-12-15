@@ -1,3 +1,6 @@
+################################################################################
+#   Handles and validates email attribute to be saved
+################################################################################
 module Emailable
   extend ActiveSupport::Concern
 
