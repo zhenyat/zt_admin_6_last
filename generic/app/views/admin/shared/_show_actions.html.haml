@@ -1,6 +1,6 @@
 %br
 .row
   .col-md-2
-    = link_to t('actions.back'), "admin_#{object.class.name.downcase.pluralize}".to_sym, class: 'btn btn-info btn-sm'
+    = link_to t('actions.back'), "admin_#{object.class.model_name.plural}".to_sym, class: 'btn btn-info btn-sm'
   .col-md-2
-    = link_to t('actions.edit'), "edit_admin_#{object.class.name.downcase}".to_sym, class: 'btn btn-warning btn-sm'
+    = link_to t('actions.edit'), "edit_admin_#{object.class.model_name.singular}".to_sym, class: 'btn btn-warning btn-sm'

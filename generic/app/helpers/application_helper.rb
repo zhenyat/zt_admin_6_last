@@ -38,14 +38,16 @@ module ApplicationHelper
   # Handles Error messages with Bootstrap 3 styles
   # Source: http://stackoverflow.com/questions/15155890/styling-form-error-message-bootstrap-rails
   #
-  # 18.07.2015 ZT
+  # 18.07.2015  ZT
+  # 25.12.2021  object name updated
   ##############################################################################
   def errors_for(object)
     if object.errors.any?
       content_tag(:div, :class => "panel panel-danger") do
         concat(content_tag(:div, :class => "panel-heading") do
           concat(content_tag(:h4, :class => "panel-title") do
-            concat "Объект '#{t(object.class.name.camelcase.underscore)}' не может быть сохранен из-за ошибок:"
+            concat "Объект '#{t(object.class.name.underscore)}' не может быть сохранен из-за ошибок:"
+            # concat "Объект '#{t(object.class.name.underscore)}' не может быть сохранен из-за ошибок:"
           end)
         end)
         concat(content_tag(:div, :class => "panel-body") do
