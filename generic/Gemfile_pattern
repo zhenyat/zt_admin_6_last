@@ -58,12 +58,13 @@
 #   13.11.2021  gems 'securerandom' & 'countries' added
 #   03.12.2021  Ruby 3.0.3
 #   12.12.2021  Pattern for Gemfile
+#   09.01.2022  Rails 4.1.4.4
 ################################################################################
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
-gem 'rails', '6.1.4.1'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '6.1.4.4'             # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'sqlite3'                      # Use sqlite3    as the database for Active Record
 gem 'mysql2'                     # Use mysql      as the database for Active Record
