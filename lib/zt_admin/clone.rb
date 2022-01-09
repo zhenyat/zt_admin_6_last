@@ -15,6 +15,7 @@
 #   26.12.2020  3.7.0   heritable
 #   20.06.2021  3.13.0  Bootstrap 5 
 #   13.11.2021  3.15.0  UUID generation
+#   10.01.2022  3.23.0  generic test_helper.rb
 ################################################################################
 module ZtAdmin
 
@@ -339,6 +340,10 @@ module ZtAdmin
     else
       File.delete("#{AppRoot}/app/views/admin/shared/_admin_top_navigation.B4.html.haml") if File.exist?("#{AppRoot}/app/views/admin/shared/_admin_top_navigation.B4.html.haml")
     end
+
+    ### Get generic files in the *test* directory
+    action_report "test/test_helper.rb"
+    FileUtils.cp "#{test}/test_helper.rb", "#{AppRoot}/test/test_helper.rb"
 
     puts colored(MAGENTA, "\n#{TAB}Run commands now (to create db table 'users' & 'samples):")
     puts colored(MAGENTA, "#{TAB*2}rails db:create")

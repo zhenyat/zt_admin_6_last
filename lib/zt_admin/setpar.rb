@@ -5,6 +5,7 @@
 #   09.07.2020  ZT
 #   17.10.2020  Last update (AppName definition)
 #   12.12.2021  database option
+#   10.01.2022  test
 ################################################################################
 
 # Constants
@@ -107,6 +108,10 @@ module ZtAdmin
 
   def self.policies
     File.join root, 'generic', 'app', 'policies'
+  end
+
+  def self.test
+    File.join root, 'generic', 'test'
   end
 
   def self.views
