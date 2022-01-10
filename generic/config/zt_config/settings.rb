@@ -5,6 +5,7 @@
 #
 #   11.10.2016  ZT  Inherited from BKC 95km
 #   09.11.2016  MULTILINGUAL added
+#   10.01.2022  VALID_EMAIL_REGEX is set here
 ################################################################################
 
 ##### Debugging   #####
@@ -23,6 +24,7 @@ end
 
 ##### Mail  #####
 MAIL_BCC = ZT_CONFIG['mail']['bcc']
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 ##### Multilingual Mode #####
 MULTILINGUAL = ZT_CONFIG['multilingual']['status']
