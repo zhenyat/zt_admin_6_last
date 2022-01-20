@@ -8,6 +8,7 @@
 #   20.06.2021  Bootstrap 5 - jQuery + @popperjs/core (v.3.13)
 #   13.11.2021  UUID
 #   12.12.2021  database option ($dbname)
+#   20.01.2022  Simple correction
 ################################################################################
 
 module ZtAdmin
@@ -38,12 +39,6 @@ module ZtAdmin
     end
     
     File.open(file_out, "w") { |f| accepted_lines.each { |line| f.puts line } }
-
-    # if $uuid or $dbname == 'postgresql'
-    #   FileUtils.cp "#{generic}/Gemfile_uuid", "#{AppRoot}/Gemfile"
-    # else
-    #   FileUtils.cp "#{generic}/Gemfile", AppRoot
-    # end
     puts colored GREEN, "\File 'Gemfile' has been updated"
     
     puts colored(MAGENTA, "Run commands now:")
