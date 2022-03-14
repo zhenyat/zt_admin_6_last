@@ -45,8 +45,6 @@
 /node_modules
 /yarn-error.log
 
-storage/    # Active Storage attachements
-
 /public/packs
 /public/packs-test
 /node_modules
